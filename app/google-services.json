@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "549039430123",
+    "project_id": "private-ventures",
+    "storage_bucket": "private-ventures.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549039430123:android:5b086557be9545a25aa1ae",
+        "android_client_info": {
+          "package_name": "com.meditrust.findadoctor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUh60WMVFdAZZ90D5mwM1kfOmxySyMKVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
