@@ -3,16 +3,17 @@ package com.meditrust.findadoctor
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.meditrust.findadoctor.databinding.ActivityLoginBinding
 
+
 class LoginActivity : AppCompatActivity() {
-    private  val TAG = "LoginActivity"
+    private val TAG = "LoginActivity"
     private lateinit var binding: ActivityLoginBinding
     private lateinit var authStateListener: FirebaseAuth.AuthStateListener
     private lateinit var auth: FirebaseAuth
@@ -25,9 +26,22 @@ class LoginActivity : AppCompatActivity() {
         setupLogin()
         navigateRegistration()
         setupVerification()
+        setupForgotPassword()
+        hideSoftKeyboard()
+    }
+
+    private fun setupForgotPassword() {
+       binding.btnForgotPassword.setOnClickListener{
+           val dialog = PasswordResetDialog()
+           dialog.show(supportFragmentManager, "dialog_forgot_password")
+       }
     }
 
     private fun setupVerification() {
+    binding.btnResendVerification.setOnClickListener{
+        val dialog = ResendVerificationDialog()
+        dialog.show(supportFragmentManager, "dialog_resend_email_verification")
+    }
     }
 
     private fun navigateRegistration() {
@@ -47,13 +61,12 @@ class LoginActivity : AppCompatActivity() {
     private fun login() {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-
-            if (task.isSuccessful) {
-                Toast.makeText(this, "Entered data Successful", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-            }
+        ProgressDialogUtil.showProgressDialog(this, "Logging in")
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { _ ->
+            ProgressDialogUtil.hideProgressDialog()
+        }.addOnFailureListener {
+            Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+            ProgressDialogUtil.hideProgressDialog()
         }
     }
 
@@ -66,11 +79,29 @@ class LoginActivity : AppCompatActivity() {
                 // You can handle navigation or data loading here
                 // For example, start a new activity:
                 if ((user.isEmailVerified)) {
-                    Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainActivity::class.java))
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.uid)
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Authenticated with: " + user.email,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    val intent = Intent(
+                        this@LoginActivity,
+                        MainActivity::class.java
+                    )
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Please verify your email", Toast.LENGTH_SHORT).show()
+                    user.sendEmailVerification().addOnCompleteListener { task: Task<Void> ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this@LoginActivity, "Sent Verification Email", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            Toast.makeText(this@LoginActivity, "couldn't send email", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                     auth.signOut()
                 }
 
@@ -90,5 +121,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         auth.removeAuthStateListener(authStateListener)
+    }
+
+    private fun hideSoftKeyboard() {
+        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 }
