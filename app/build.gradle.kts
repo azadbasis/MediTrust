@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs")
 
 }
 
@@ -51,12 +52,23 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
+    // Views/Fragments integration
+    val nav_version = "2.8.0"
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-auth")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
+    // ViewModel +  LiveData+ Lifecycles only (without ViewModel or LiveData)+ Saved state module for ViewModel
+    val lifecycle_version="2.6.1"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
 
 }
 

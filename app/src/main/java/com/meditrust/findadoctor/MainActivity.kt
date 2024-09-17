@@ -7,8 +7,13 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.meditrust.findadoctor.databinding.ActivityMainBinding
@@ -23,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     // Declare the binding variable
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var navController: NavController
     private lateinit var auth: FirebaseAuth
     private lateinit var authStateListener: FirebaseAuth.AuthStateListener
     private lateinit var datastoreUtil: DatastoreUtil
@@ -32,13 +38,38 @@ class MainActivity : AppCompatActivity() {
         // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.bottomNavigationView.visibility = View.GONE
         setupToolbar();
+        setupNavigation()
         setupObject()
         setupAuthStateListener()
         setUserDetails()
-        getUserDetails()
+
     }
 
+    private fun setupNavigation() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
+        navController = navHostFragment.findNavController()
+        binding.bottomNavigationView.setupWithNavController(navController)
+
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment ,R.id.findBookFragment ,R.id.bookingsFragment ,R.id.messageFragment -> {
+                    binding.bottomNavigationView.visibility = View.VISIBLE
+                 //   fab.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+//                    fab.visibility = View.GONE
+                }
+            }
+        }
+
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
     private fun setUserDetails() {
         val user = auth.currentUser
           if (user != null) {
@@ -107,7 +138,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.settings_menu, menu)
@@ -152,7 +182,6 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         checkFirebaseAuthState()
     }
-
 
     /**
      * Sign out the current user
