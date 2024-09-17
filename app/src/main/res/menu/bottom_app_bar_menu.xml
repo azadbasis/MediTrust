@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/findBookFragment"
+        android:icon="@drawable/ic_search_outline"
+        android:title="Find &amp; book" />
+
+
+    <item
+        android:id="@+id/bookingsFragment"
+        android:icon="@drawable/ic_bookings_outline"
+        android:title="Bookings" />
+
+    <item
+        android:id="@+id/messageFragment"
+        android:icon="@drawable/ic_message_outline"
+        android:title="Message" />
+<!--
+    <item
+        android:id="@+id/sellFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Account" />-->
+</menu>
