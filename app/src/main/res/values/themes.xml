@@ -51,4 +51,5 @@
         <item name="colorMediTrustContainer">@color/colorMediTrustContainer</item>
         <item name="colorOnMediTrustContainer">@color/colorOnMediTrustContainer</item>
     </style>
+
 </resources>

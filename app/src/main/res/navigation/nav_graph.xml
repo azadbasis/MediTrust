@@ -27,12 +27,15 @@
         tools:layout="@layout/fragment_message" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.meditrust.findadoctor.onboarding.SplashFragment"
+        android:name="com.meditrust.findadoctor.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -43,4 +46,33 @@
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.meditrust.findadoctor.onboarding.presentation.welcome.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginOptionsFragment"
+            app:destination="@id/loginOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginOptionsFragment"
+        android:name="com.meditrust.findadoctor.onboarding.presentation.loginoptions.LoginOptionsFragment"
+        android:label="fragment_login_options"
+        tools:layout="@layout/fragment_login_options" >
+        <action
+            android:id="@+id/action_loginOptionsFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_loginOptionsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginOptionsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.meditrust.findadoctor.onboarding.presentation.main.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 </navigation>

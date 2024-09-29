@@ -1,4 +1,4 @@
-package com.meditrust.findadoctor.onboarding
+package com.meditrust.findadoctor
 
 import android.os.Bundle
 import android.os.Handler

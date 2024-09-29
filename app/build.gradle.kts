@@ -3,7 +3,8 @@ plugins {
     id("com.google.gms.google-services")
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs")
-
+    id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -20,7 +21,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
-        viewBinding= true
+        viewBinding = true
     }
     buildTypes {
         release {
@@ -38,6 +39,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
 }
 
 dependencies {
@@ -52,7 +54,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
     // Views/Fragments integration
     val nav_version = "2.8.0"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
@@ -64,12 +65,27 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     // ViewModel +  LiveData+ Lifecycles only (without ViewModel or LiveData)+ Saved state module for ViewModel
-    val lifecycle_version="2.6.1"
+    val lifecycle_version = "2.6.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
 
+    implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation("com.intuit.sdp:sdp-android:1.1.1")
+    implementation("com.intuit.ssp:ssp-android:1.1.1")
+
+    //Datastore
+    val datastore_version = "1.1.1"
+    implementation("androidx.datastore:datastore-preferences:$datastore_version")
+
+    // Dagger - Hilt
+    val dagger_hilt_version = "2.45"
+    implementation("com.google.dagger:hilt-android:$dagger_hilt_version")
+    kapt("com.google.dagger:hilt-compiler:$dagger_hilt_version")
+
+    //Timber
+    implementation ("com.jakewharton.timber:timber:5.0.1")
 }
 
 
