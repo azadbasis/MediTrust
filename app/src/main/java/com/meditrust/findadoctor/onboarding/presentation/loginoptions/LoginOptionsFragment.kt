@@ -6,16 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.meditrust.findadoctor.R
+import com.meditrust.findadoctor.databinding.FragmentLoginOptionsBinding
 
 
 class LoginOptionsFragment : Fragment() {
+
+    private var _binding: FragmentLoginOptionsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_options, container, false)
+        _binding = FragmentLoginOptionsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 
