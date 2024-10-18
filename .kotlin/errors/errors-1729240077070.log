@@ -1,0 +1,191 @@
+kotlin version: 2.0.10
+error message: org.jetbrains.kotlin.backend.common.BackendException: Backend Internal error: Exception during IR lowering
+File being compiled: D:/MobileApplication/AndroidProject/Private Venture/MediTrust/app/src/main/java/com/meditrust/findadoctor/auth/presentation/register/view/RegistrationFragment.kt
+The root cause java.lang.RuntimeException was thrown at: org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException(CodegenUtil.kt:253)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException$default(CodegenUtil.kt:236)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:65)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:52)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:38)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:29)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:16)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompilerPhaseKt.invokeToplevel(CompilerPhase.kt:62)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.invokeCodegen(JvmIrCodegenFactory.kt:371)
+	at org.jetbrains.kotlin.codegen.CodegenFactory.generateModule(CodegenFactory.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.generateModuleInFrontendIRMode(JvmIrCodegenFactory.kt:433)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.generateCodeFromIr(jvmCompilerPipeline.kt:240)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.compileModulesUsingFrontendIrAndLightTree(jvmCompilerPipeline.kt:139)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:155)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:50)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:104)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:48)
+	at org.jetbrains.kotlin.cli.common.CLITool.exec(CLITool.kt:101)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:453)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:62)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.doCompile(IncrementalCompilerRunner.kt:506)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:423)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileNonIncrementally(IncrementalCompilerRunner.kt:301)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:129)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execIncrementalCompiler(CompileServiceImpl.kt:676)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execIncrementalCompiler(CompileServiceImpl.kt:92)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1661)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN name:onCreateView visibility:public modality:OPEN <> ($this:com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment, inflater:android.view.LayoutInflater, container:android.view.ViewGroup?, savedInstanceState:android.os.Bundle?) returnType:android.view.View?
+  overridden:
+    public open fun onCreateView (p0: @[EnhancedNullability] android.view.LayoutInflater, p1: @[EnhancedNullability] android.view.ViewGroup?, p2: @[EnhancedNullability] android.os.Bundle?): @[EnhancedNullability] android.view.View? declared in androidx.fragment.app.Fragment
+  $this: VALUE_PARAMETER name:<this> type:com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment
+  VALUE_PARAMETER name:inflater index:0 type:android.view.LayoutInflater
+  VALUE_PARAMETER name:container index:1 type:android.view.ViewGroup?
+  VALUE_PARAMETER name:savedInstanceState index:2 type:android.os.Bundle?
+  BLOCK_BODY
+    SET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:_binding type:com.meditrust.findadoctor.databinding.FragmentRegistrationBinding? visibility:private' type=kotlin.Unit origin=null
+      receiver: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+      value: CALL 'public open fun inflate (inflater: @[EnhancedNullability] android.view.LayoutInflater, parent: @[EnhancedNullability] android.view.ViewGroup?, attachToParent: kotlin.Boolean): @[EnhancedNullability] com.meditrust.findadoctor.databinding.FragmentRegistrationBinding declared in com.meditrust.findadoctor.databinding.FragmentRegistrationBinding' type=@[EnhancedNullability] com.meditrust.findadoctor.databinding.FragmentRegistrationBinding origin=null
+        inflater: GET_VAR 'inflater: android.view.LayoutInflater declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=android.view.LayoutInflater origin=null
+        parent: GET_VAR 'container: android.view.ViewGroup? declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=android.view.ViewGroup? origin=null
+        attachToParent: CONST Boolean type=kotlin.Boolean value=false
+    CALL 'private final fun setupSignInText (): kotlin.Unit declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment' type=kotlin.Unit origin=null
+      $this: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+    CALL 'private final fun setupPrivacyPolicy (): kotlin.Unit declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment' type=kotlin.Unit origin=null
+      $this: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+    VAR name:frameLayout type:android.widget.FrameLayout [val]
+      CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=android.widget.FrameLayout origin=null
+        <T>: android.widget.FrameLayout
+        $receiver: CONSTRUCTOR_CALL 'public constructor <init> (p0: @[EnhancedNullability] android.content.Context) declared in android.widget.FrameLayout' type=android.widget.FrameLayout origin=null
+          p0: CALL 'public final fun requireContext (): @[EnhancedNullability] android.content.Context [fake_override] declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment' type=@[EnhancedNullability] android.content.Context origin=null
+            $this: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+        block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<android.widget.FrameLayout, kotlin.Unit> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun onCreateView$lambda$0 (this$0: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment): kotlin.Unit declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment' type=@[ExtensionFunctionType] kotlin.Function1<android.widget.FrameLayout, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+            this$0: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+    CALL 'public open fun addView (p0: @[FlexibleNullability] android.view.View?): kotlin.Unit [fake_override] declared in androidx.coordinatorlayout.widget.CoordinatorLayout' type=kotlin.Unit origin=null
+      $this: CALL 'public open fun getRoot (): @[EnhancedNullability] androidx.coordinatorlayout.widget.CoordinatorLayout declared in com.meditrust.findadoctor.databinding.FragmentRegistrationBinding' type=@[EnhancedNullability] androidx.coordinatorlayout.widget.CoordinatorLayout origin=GET_PROPERTY
+        $this: CALL 'private final fun <get-binding> (): com.meditrust.findadoctor.databinding.FragmentRegistrationBinding declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment' type=com.meditrust.findadoctor.databinding.FragmentRegistrationBinding origin=GET_PROPERTY
+          $this: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+      p0: GET_VAR 'val frameLayout: android.widget.FrameLayout [val] declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=android.widget.FrameLayout origin=null
+    CALL 'public final fun show (): kotlin.Unit declared in com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator' type=kotlin.Unit origin=null
+      $this: BLOCK type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator origin=FOLDED_ELVIS
+        WHEN type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:customCircularProgressIndicator type:com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? visibility:private' type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? origin=null
+                  receiver: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? [val] declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? [val] declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="customCircularProgressIndicator"
+    RETURN type=kotlin.Nothing from='public open fun onCreateView (inflater: android.view.LayoutInflater, container: android.view.ViewGroup?, savedInstanceState: android.os.Bundle?): android.view.View? declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment'
+      CALL 'public open fun getRoot (): @[EnhancedNullability] androidx.coordinatorlayout.widget.CoordinatorLayout declared in com.meditrust.findadoctor.databinding.FragmentRegistrationBinding' type=@[EnhancedNullability] androidx.coordinatorlayout.widget.CoordinatorLayout origin=GET_PROPERTY
+        $this: CALL 'private final fun <get-binding> (): com.meditrust.findadoctor.databinding.FragmentRegistrationBinding declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment' type=com.meditrust.findadoctor.databinding.FragmentRegistrationBinding origin=GET_PROPERTY
+          $this: GET_VAR '<this>: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:42)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:385)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:402)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:169)
+	at org.jetbrains.kotlin.backend.jvm.FileCodegen.lower(JvmPhases.kt:41)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt.makeIrFilePhase$lambda$5(PhaseBuilders.kt:114)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt$createSimpleNamedCompilerPhase$1.phaseBody(PhaseBuilders.kt:71)
+	at org.jetbrains.kotlin.backend.common.phaser.SimpleNamedCompilerPhase.phaseBody(CompilerPhase.kt:226)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:62)
+	... 43 more
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN INLINE_LAMBDA name:onCreateView$lambda$0 visibility:private modality:FINAL <> ($receiver:android.widget.FrameLayout, this$0:com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment) returnType:kotlin.Unit
+  $receiver: VALUE_PARAMETER name:$this$apply type:android.widget.FrameLayout
+  VALUE_PARAMETER BOUND_VALUE_PARAMETER name:this$0 index:0 type:com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment
+  BLOCK_BODY
+    VAR name:$i$a$-apply-RegistrationFragment$onCreateView$frameLayout$1 type:kotlin.Int [val]
+      CONST Int type=kotlin.Int value=0
+    CALL 'public open fun setLayoutParams (p0: @[FlexibleNullability] android.view.ViewGroup.LayoutParams?): kotlin.Unit [fake_override] declared in android.widget.FrameLayout' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: android.widget.FrameLayout declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView$lambda$0' type=android.widget.FrameLayout origin=null
+      p0: CONSTRUCTOR_CALL 'public constructor <init> (p0: kotlin.Int, p1: kotlin.Int) declared in android.widget.FrameLayout.LayoutParams' type=android.widget.FrameLayout.LayoutParams origin=null
+        p0: CONST Int type=kotlin.Int value=-1
+        p1: CONST Int type=kotlin.Int value=-1
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:gravity type:kotlin.Int visibility:public [final,static]' type=kotlin.Unit origin=EQ
+      value: CONST Int type=kotlin.Int value=17
+    CALL 'public open fun addView (p0: @[FlexibleNullability] android.view.View?): kotlin.Unit [fake_override] declared in android.widget.FrameLayout' type=kotlin.Unit origin=null
+      $this: GET_VAR '$this$apply: android.widget.FrameLayout declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView$lambda$0' type=android.widget.FrameLayout origin=null
+      p0: BLOCK type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator origin=FOLDED_ELVIS
+        WHEN type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator origin=FOLDED_ELVIS
+          BRANCH
+            if: COMPOSITE type=kotlin.Boolean origin=null
+              VAR IR_TEMPORARY_VARIABLE name:tmp0 type:com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? [val]
+                GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:customCircularProgressIndicator type:com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? visibility:private' type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? origin=null
+                  receiver: GET_VAR 'this$0: com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView$lambda$0' type=com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment origin=null
+              CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                  arg0: GET_VAR 'val tmp0: com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? [val] declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView$lambda$0' type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? origin=null
+                  arg1: CONST Null type=kotlin.Nothing? value=null
+            then: GET_VAR 'val tmp0: com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? [val] declared in com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment.onCreateView$lambda$0' type=com.meditrust.findadoctor.core.util.CustomCircularProgressIndicator? origin=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public final fun throwUninitializedPropertyAccessException (propertyName: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+                propertyName: CONST String type=kotlin.String value="customCircularProgressIndicator"
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:50)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrSourceCompilerForInline.generateLambdaBody(IrSourceCompilerForInline.kt:67)
+	at org.jetbrains.kotlin.codegen.inline.ExpressionLambda.generateLambdaBody(LambdaInfo.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrInlineCodegen.genValueAndPut(IrInlineCodegen.kt:99)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:610)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:638)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:137)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:784)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:137)
+	at org.jetbrains.kotlin.ir.declarations.IrVariable.accept(IrVariable.kt:36)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:573)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:578)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:137)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:239)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:121)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:46)
+	... 53 more
+Caused by: java.lang.AssertionError: access of const val: SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:gravity type:kotlin.Int visibility:public [final,static]' type=kotlin.Unit origin=EQ
+  value: CONST Int type=kotlin.Int value=17
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:855)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:137)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitSetField(IrElementVisitor.kt:206)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:902)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:137)
+	at org.jetbrains.kotlin.ir.expressions.IrSetField.accept(IrSetField.kt:21)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:573)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:578)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:137)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:239)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:121)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:46)
+	... 70 more
+
+

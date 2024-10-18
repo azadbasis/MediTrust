@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:paddingBottom="@dimen/_30sdp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".auth.presentation.dialog.EmailVerificationGuidelineBottomSheet">
+
+   <ImageView
+       android:id="@+id/img_close"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:focusable="true"
+       android:src="@drawable/ic_close"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_margin="@dimen/_17sdp"
+       android:padding="@dimen/_5sdp"
+       android:clickable="true"
+       android:foreground="?attr/selectableItemBackgroundBorderless"
+       />
+    <TextView
+        android:id="@+id/tv_appName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_17sdp"
+        android:text="Medi Trust"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Check your email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_appName"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        />
+
+    <TextView
+        android:id="@+id/textViewGuideline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_30sdp"
+        android:layout_marginTop="36dp"
+        android:text="To verify your email, please check your inbox and click on the verification link."
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    <Button
+        android:id="@+id/buttonDismiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/_30sdp"
+        android:text="Got It" />
+</androidx.constraintlayout.widget.ConstraintLayout>

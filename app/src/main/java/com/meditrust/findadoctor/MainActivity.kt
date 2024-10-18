@@ -9,8 +9,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var datastoreUtil: DatastoreUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition { false }
         super.onCreate(savedInstanceState)
         // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -45,6 +49,21 @@ class MainActivity : AppCompatActivity() {
         setupAuthStateListener()
         setUserDetails()
 
+        // Handle navigation based on onboarding completion
+        handleInitialNavigation()
+    }
+
+    private fun handleInitialNavigation() {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        val isOnboardingCompleted = sharedPreferences.getBoolean("onboarding_completed", false)
+
+        if (!isOnboardingCompleted) {
+            // Navigate to Onboarding Fragment if not completed
+            navController.navigate(R.id.action_homeFragment_to_onBoardingFragment)
+        } else {
+            // Navigate to Home Fragment if onboarding is completed
+            navController.navigate(R.id.homeFragment)
+        }
     }
 
     private fun setupNavigation() {
@@ -107,13 +126,10 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "onAuthStateChanged:signed_in:" + user.uid)
             } else {
                 Log.d(TAG, "onAuthStateChanged:signed_out")
-                val intent = Intent(
-                    this@MainActivity,
-                    LoginActivity::class.java
-                )
+             /*   val intent = Intent(this@MainActivity, LoginActivity::class.java)
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
-                finish()
+                finish()*/
             }
         }
     }
@@ -180,7 +196,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        checkFirebaseAuthState()
+      //  checkFirebaseAuthState()
     }
 
     /**

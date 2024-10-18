@@ -15,20 +15,18 @@
             style="?attr/collapsingToolbarLayoutMediumStyle"
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
-            app:title="Sign in  with email"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            >
+            app:title="Sign in  with email">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
                 android:elevation="0dp"
+                app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_keyboard_backspace"
                 app:navigationIconTint="@color/colorMediTrust"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -43,6 +41,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_50sdp"
             android:padding="@dimen/_20sdp">
 
             <TextView
@@ -61,11 +60,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:hintEnabled="false"
+                app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_emailHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="azhar@email.com"
@@ -96,6 +97,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password(8+ characters)"
@@ -108,45 +110,55 @@
                 android:id="@+id/tv_forgotPassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_password"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="Forgot password?"
-           />
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_password" />
 
             <TextView
                 android:id="@+id/tv_verifyAccount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Verify your account"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_password"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:text="Verify your account"
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_password" />
+
+            <TextView
+                android:id="@+id/tv_signInErrors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/md_theme_errorContainer_highContrast"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_forgotPassword" />
+
             <Button
-                android:id="@+id/btn_continue" 
+                android:id="@+id/btn_continue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:text="Continue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_forgotPassword" />
+                app:layout_constraintTop_toBottomOf="@id/tv_signInErrors" />
 
             <TextView
                 android:id="@+id/tv_signUp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/btn_continue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="Don't have an account? Sign up"
-                android:gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="Don't have an account? Sign up"
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_continue" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,8 +168,8 @@
         android:id="@+id/bottom_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F9F9FF"
         android:layout_gravity="bottom"
+        android:background="#F9F9FF"
         android:padding="@dimen/_20sdp"
         app:layout_anchorGravity="bottom|center">
 
@@ -170,6 +182,11 @@
             android:text="By signing in, you agree to our Terms of Use and Privacy Policy."
             android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
     </FrameLayout>
-
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+      android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

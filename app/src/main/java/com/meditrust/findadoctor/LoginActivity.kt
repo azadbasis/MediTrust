@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        splashScreen.setKeepOnScreenCondition { false }
+      //  splashScreen.setKeepOnScreenCondition { false }
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)

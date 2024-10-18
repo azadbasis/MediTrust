@@ -60,11 +60,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:hintEnabled="false"
+                app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_nameHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                  android:id="@+id/input_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Input your first name and last name"
@@ -89,14 +91,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:hintEnabled="false"
+                app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_emailHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                  android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="azhar@email.com"
+                    android:inputType="textEmailAddress"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -124,6 +129,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password(8+ characters)"
@@ -139,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:text="Create account"
+                android:enabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_password" />
@@ -178,5 +185,12 @@
             android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
     </FrameLayout>
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+       android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

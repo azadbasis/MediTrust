@@ -12,29 +12,31 @@ import com.meditrust.findadoctor.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-    var binding: FragmentSplashBinding? = null
+    private var _binding: FragmentSplashBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentSplashBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
-        return binding?.root
+    ): View {
+        _binding = FragmentSplashBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        Handler().postDelayed({
-            // Replace this with your actual app's main activity  
-            val action = SplashFragmentDirections.actionSplashFragmentToLoginFragment()
-            findNavController().navigate(action)
-        }, 2000)
+        navigateToLoginAfterDelay()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun navigateToLoginAfterDelay() {
+        view?.postDelayed({
+          /*  val action = SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+            findNavController().navigate(action)*/
+        }, 2000)
+    }
 }

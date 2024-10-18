@@ -6,6 +6,14 @@
         <entry key="Firebase Crashlytics">
           <value>
             <InsightsFilterSettings>
+              <option name="connection">
+                <ConnectionSetting>
+                  <option name="appId" value="com.meditrust.findadoctor" />
+                  <option name="mobileSdkAppId" value="1:549039430123:android:5b086557be9545a25aa1ae" />
+                  <option name="projectId" value="private-ventures" />
+                  <option name="projectNumber" value="549039430123" />
+                </ConnectionSetting>
+              </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
               <option name="timeIntervalDays" value="THIRTY_DAYS" />
               <option name="visibilityType" value="ALL" />

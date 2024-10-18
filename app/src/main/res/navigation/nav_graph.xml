@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.meditrust.findadoctor.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/findBookFragment"
         android:name="com.meditrust.findadoctor.findandbook.FindBookFragment"
@@ -29,14 +33,7 @@
         android:id="@+id/splashFragment"
         android:name="com.meditrust.findadoctor.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_onBoardingFragment"
-            app:destination="@id/onBoardingFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.meditrust.findadoctor.auth.presentation.login.view.LoginFragment"
@@ -48,36 +45,34 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userTypeSelectionBottomSheet"
+            app:destination="@id/userTypeSelectionBottomSheet" />
+
+
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.meditrust.findadoctor.onboarding.presentation.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_loginOptionsFragment"
-            app:destination="@id/loginOptionsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_welcome" />
     <fragment
         android:id="@+id/loginOptionsFragment"
         android:name="com.meditrust.findadoctor.onboarding.presentation.loginoptions.LoginOptionsFragment"
         android:label="fragment_login_options"
-        tools:layout="@layout/fragment_login_options" >
-        <action
-            android:id="@+id/action_loginOptionsFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
-        <action
-            android:id="@+id/action_loginOptionsFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_loginOptionsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_login_options" />
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.meditrust.findadoctor.onboarding.presentation.main.OnBoardingFragment"
         android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" />
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_onBoardingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.meditrust.findadoctor.auth.presentation.register.view.RegistrationFragment"
@@ -86,5 +81,43 @@
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_emailVerificationGuidelineBottomSheet"
+            app:destination="@id/emailVerificationGuidelineBottomSheet" />
     </fragment>
+    <dialog
+        android:id="@+id/emailVerificationGuidelineBottomSheet"
+        android:name="com.meditrust.findadoctor.auth.presentation.dialog.EmailVerificationGuidelineBottomSheet"
+        android:label="email_verification_guideline_sheet"
+        tools:layout="@layout/email_verification_guideline_sheet" >
+        <action
+            android:id="@+id/action_emailVerificationGuidelineBottomSheet_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/userTypeSelectionBottomSheet"
+        android:name="com.meditrust.findadoctor.auth.presentation.dialog.UserTypeSelectionBottomSheet"
+        android:label="user_type_selection_sheet"
+        tools:layout="@layout/user_type_selection_sheet" >
+        <action
+            android:id="@+id/action_userTypeSelectionBottomSheet_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_userTypeSelectionBottomSheet_to_doctorProfileInfoFragment"
+            app:destination="@id/doctorProfileInfoFragment" />
+        <action
+            android:id="@+id/action_userTypeSelectionBottomSheet_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/doctorProfileInfoFragment"
+        android:name="com.meditrust.findadoctor.profile.presentation.doctor.DoctorProfileInfoFragment"
+        android:label="fragment_doctor_profile_info"
+        tools:layout="@layout/fragment_doctor_profile_info" >
+        <action
+            android:id="@+id/action_doctorProfileInfoFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+
 </navigation>

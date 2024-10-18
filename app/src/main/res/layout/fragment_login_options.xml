@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".onboarding.presentation.loginoptions.LoginOptionsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -24,7 +25,7 @@
 
     <Button
         android:id="@+id/btn_backWelcome"
-        style="?attr/materialIconButtonStyle"
+        style="@style/Widget.Material3.Button.TonalButton.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
@@ -53,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:text="Log in or sign up to continue:"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         app:layout_constraintStart_toStartOf="@id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@id/tv_started" />
 
@@ -66,7 +67,7 @@
         android:drawablePadding="@dimen/_10sdp"
         android:drawableTint="@color/colorMediTrust"
         android:text="Easily find and book a doctor"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintStart_toStartOf="@id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@id/tv_login_or_signup" />
 
@@ -79,7 +80,7 @@
         android:drawablePadding="@dimen/_10sdp"
         android:drawableTint="@color/colorMediTrust"
         android:text="Book and complete forms faster"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintStart_toStartOf="@id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@id/tv_book_a_doctor" />
 
@@ -92,7 +93,7 @@
         android:drawablePadding="@dimen/_10sdp"
         android:drawableTint="@color/colorMediTrust"
         android:text="Get a personalised online experience"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintStart_toStartOf="@id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@id/tv_completeFaster" />
 
