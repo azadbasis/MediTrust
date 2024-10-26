@@ -1,13 +1,13 @@
 package com.meditrust.findadoctor.auth.presentation.login.view
 
-import android.content.Intent
 import android.graphics.Paint
+import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +16,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.meditrust.findadoctor.R
 import com.meditrust.findadoctor.core.util.NoUnderlineClickableSpan
+import com.meditrust.findadoctor.core.util.PersistenceUtil
 import com.meditrust.findadoctor.core.util.TextViewUtils
+import com.meditrust.findadoctor.core.util.UserRoles
 import com.meditrust.findadoctor.core.util.hideKeyboard
 import com.meditrust.findadoctor.databinding.FragmentLoginBinding
 
@@ -27,16 +30,13 @@ class LoginFragment : Fragment() {
 
     private val TAG = "LoginFragment"
     private var _binding: FragmentLoginBinding? = null
-    private val binding: FragmentLoginBinding
-        get() = _binding
-            ?: throw IllegalStateException("View binding is only valid between onCreateView and onDestroyView")
+    private val binding get() = _binding!!
 
-    private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
-
-
+    private lateinit var persistenceUtil: PersistenceUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        persistenceUtil = PersistenceUtil(requireContext())
     }
 
     override fun onCreateView(
@@ -44,58 +44,54 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        setupFirebaseAuth()
-        setupUIComponents()
-
 
         return binding.root
     }
+
     private fun setupUIComponents() {
         setupSignUpText()
         setupPrivacyPolicy()
         binding.progressBar.hide()
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbarNavigation()
-        setupButtonListeners(view)
+        //   setupFirebaseAuth()
+        setupUIComponents()
+        setupValidation()
+        configureButtonListeners(view)
         underlineText()
     }
 
-    private fun setupFirebaseAuth() {
-        mAuthListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            if (user != null) {
-                // Check if the email is verified
-                // TODO: Here we pass verified user and admin created user profile as well
-                //  we provide special email containing "medi".  by checking this we bypass email verification
-                //  or we can use specific domain like abc@medi.trust for random doctor profile
-
-                if (user.isEmailVerified) {
-                    Log.d(TAG, "onAuthStateChanged:signed_in:${user.uid}")
-                    Toast.makeText(context, "Authenticated with: ${user.email}", Toast.LENGTH_SHORT)
-                        .show()
-                    // TODO: Navigation graph use for home fragment 
-                    /*   val intent = Intent(activity, SignedInActivity::class.java)
-                       intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                       startActivity(intent)
-                       activity?.finish()*/
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Email is not Verified\nCheck your Inbox",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    FirebaseAuth.getInstance().signOut()
+    private fun navigateToHomeScreenBasedOnUserRole(userRole: String) {
+        if (isAdded) {  // Check if fragment is added before navigation
+            when (userRole) {
+                UserRoles.ADMIN -> {
+                    persistenceUtil.setOnboardingCompleted(true)
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }
-            } else {
-                Log.d(TAG, "onAuthStateChanged:signed_out")
+
+                UserRoles.DOCTOR -> {
+                    persistenceUtil.setOnboardingCompleted(true)
+                    if (persistenceUtil.isProfileCompleted()) {
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    } else {
+                        findNavController().navigate(R.id.action_loginFragment_to_doctorProfileInfoFragment)
+                    }
+                }
+
+                UserRoles.PATIENT -> {
+                    persistenceUtil.setOnboardingCompleted(true)
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                }
+
+                else -> Log.d(TAG, "Unknown user role: $userRole")
             }
+        } else {
+            Log.e(TAG, "Fragment is not added. Skipping navigation.")
         }
     }
-
 
     private fun setupToolbarNavigation() {
         binding.toolbar.setNavigationOnClickListener {
@@ -103,10 +99,29 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun setupButtonListeners(view: View) {
+    private fun configureButtonListeners(view: View) {
+        loginListener(view)
+        forgotPasswordListener(view)
+        verifyAccountListener(view)
+    }
+
+    private fun verifyAccountListener(view: View) {
+        binding.tvVerifyAccount.setOnClickListener {
+            hideKeyboard(view)
+            findNavController().navigate(R.id.action_loginFragment_to_resendVerificationBottomSheet)
+        }
+    }
+
+    private fun forgotPasswordListener(view: View) {
+        binding.tvForgotPassword.setOnClickListener {
+            hideKeyboard(view)
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordBottomSheet)
+        }
+    }
+
+    private fun loginListener(view: View) {
         binding.btnContinue.setOnClickListener {
-            // findNavController().navigate(R.id.action_loginFragment_to_userTypeSelectionBottomSheet)
-            binding.btnContinue.isEnabled=false
+            binding.btnContinue.isEnabled = false
             hideKeyboard(view)
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
@@ -118,25 +133,83 @@ class LoginFragment : Fragment() {
                         binding.progressBar.hide()
                         if (task.isSuccessful) {
                             Log.d(TAG, "signInWithEmail: success")
-                            binding.tvSignInErrors.text="signInWithEmail: success"
+                            val currentUser = FirebaseAuth.getInstance().currentUser
+                            verifyAccount(currentUser)
                             clearAllFields()
-                            binding.btnContinue.isEnabled=true
+                            binding.btnContinue.isEnabled = true
                         } else {
-                            binding.tvSignInErrors.text="signInWithEmail: failure ${task.exception}"
-                            binding.btnContinue.isEnabled=true
+                            binding.tvSignInErrors.text =
+                                "signInWithEmail: failure ${task.exception}"
+                            binding.btnContinue.isEnabled = true
                         }
                     }.addOnFailureListener { e ->
-                        binding.tvSignInErrors.text= "Authentication Failed: ${e.message}"
-                        binding.btnContinue.isEnabled=true
+                        binding.tvSignInErrors.text = "Authentication Failed: ${e.message}"
+                        binding.btnContinue.isEnabled = true
                     }
-               binding.btnContinue.isEnabled=true
+
             } else {
-                binding.tvSignInErrors.text= "You didn't fill in all the fields."
-                binding.btnContinue.isEnabled=true
+                binding.tvSignInErrors.text = "You didn't fill in all the fields."
+                binding.btnContinue.isEnabled = true
             }
         }
     }
 
+    private fun verifyAccount(user: FirebaseUser?) {
+
+        if (user != null) {
+            Toast.makeText(context, "Authenticated with: ${user.displayName}", Toast.LENGTH_SHORT)
+                .show()
+            val userRole = user.displayName.takeIf { !it.isNullOrBlank() } ?: "guest"
+            if (user.isEmailVerified) {
+                Log.d(TAG, "onAuthStateChanged:signed_in:${user.uid}")
+                Toast.makeText(context, "Authenticated with: ${user.email}", Toast.LENGTH_SHORT)
+                    .show()
+                navigateToHomeScreenBasedOnUserRole(userRole)
+            } else {
+                Toast.makeText(
+                    context,
+                    "Email is not Verified\nCheck your Inbox",
+                    Toast.LENGTH_SHORT
+                ).show()
+                FirebaseAuth.getInstance().signOut()
+            }
+        }
+    }
+
+    private fun setupValidation() {
+        with(binding) {
+            val textWatcherEmail = object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun afterTextChanged(s: Editable?) {
+                    tvSignInErrors.text = ""
+                }
+            }
+            val textWatcherPassword = object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun afterTextChanged(s: Editable?) {
+                    tvSignInErrors.text = ""
+                }
+            }
+            inputEmail.addTextChangedListener(textWatcherEmail)
+            inputPassword.addTextChangedListener(textWatcherPassword)
+        }
+    }
 
     private fun clearAllFields() {
         with(binding) {
@@ -145,6 +218,7 @@ class LoginFragment : Fragment() {
 
             inputPassword.text?.clear()
             inputPassword.clearFocus()
+            tvSignInErrors.text = ""
         }
     }
 
@@ -187,18 +261,6 @@ class LoginFragment : Fragment() {
             policyText,
             clickableParts
         )
-    }
-
-    override fun onStart() {
-        super.onStart()
-        FirebaseAuth.getInstance().addAuthStateListener(mAuthListener)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        if (::mAuthListener.isInitialized) {
-            FirebaseAuth.getInstance().removeAuthStateListener(mAuthListener)
-        }
     }
 
     override fun onDestroyView() {

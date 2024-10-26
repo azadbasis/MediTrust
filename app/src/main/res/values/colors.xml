@@ -141,6 +141,7 @@
     <color name="md_theme_surfaceContainer_highContrast">#EBEEF7</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#E5E8F1</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#E0E2EC</color>
+    <color name="md_theme_disable_trailingIcon">#611D1B20</color>
     <color name="colorMediTrust">#005096</color>
     <color name="colorOnMediTrust">#FFFFFF</color>
     <color name="colorMediTrustContainer">#0075D6</color>

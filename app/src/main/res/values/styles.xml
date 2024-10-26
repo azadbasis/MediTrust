@@ -7,4 +7,18 @@
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="AppTheme">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="ShapeAppearanceOverlay.App.CornerSize15Percent" parent="AppTheme">
+        <item name="cornerSize">15%</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.App.CornerSizeTL30BR10Percent" parent="AppTheme">
+        <item name="cornerSizeTopLeft">30%</item>
+        <item name="cornerSizeBottomRight">10%</item>
+    </style>
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textCursorDrawable">@drawable/white_cursor</item>
+
+    </style>
+
 </resources>

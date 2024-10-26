@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="4dp"
+    android:layout_margin="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_add_new"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H,16:9"
+            android:src="@drawable/ic_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:tint="@color/md_theme_onPrimary_mediumContrast"
+            app:contentPadding="@dimen/_8sdp"
+            android:background="@color/md_theme_primary_mediumContrast"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/customer_tile"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:layout_constraintDimensionRatio="H,16:9"
+            android:background="@drawable/leading_avatar_shape"
+            android:drawableTint="@android:color/white"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/md_theme_onPrimary_mediumContrast"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:gravity="center_horizontal"
+            android:text="Add new"
+            android:ellipsize="end"
+            android:minEms="10"
+            app:layout_constrainedWidth="true"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            app:layout_constraintEnd_toEndOf="@id/customer_tile"
+            app:layout_constraintStart_toStartOf="@id/customer_tile"
+            app:layout_constraintTop_toBottomOf="@id/img_add_new" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

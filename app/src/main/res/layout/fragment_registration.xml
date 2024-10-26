@@ -138,6 +138,44 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--GENDER-->
+            <TextView
+                android:id="@+id/tv_genderHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Your role"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                app:layout_constraintStart_toStartOf="@id/layout_password"
+                app:layout_constraintTop_toBottomOf="@id/layout_password" />
+
+
+            <RadioButton
+                android:id="@+id/radio_patient"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/custom_outline"
+                android:text="Patient"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                app:layout_constraintEnd_toStartOf="@+id/radio_doctor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_genderHint" />
+
+
+            <RadioButton
+                android:id="@+id/radio_doctor"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/custom_outline"
+                android:text="Doctor"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radio_patient"
+                app:layout_constraintTop_toBottomOf="@id/tv_genderHint" />
+
 
             <Button
                 android:id="@+id/btn_createAccount"
@@ -148,7 +186,7 @@
                 android:enabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_password" />
+                app:layout_constraintTop_toBottomOf="@id/radio_patient" />
 
             <TextView
                 android:id="@+id/tv_signIn"

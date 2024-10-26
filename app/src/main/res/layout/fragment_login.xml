@@ -16,8 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleMarginBottom="@dimen/_20sdp"
+            app:subtitle="Patient and doctor accounts are both supported."
             app:title="Sign in  with email">
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient and doctor accounts are both supported."
+                android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:enabled="false"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -110,21 +119,31 @@
                 android:id="@+id/tv_forgotPassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:text="Forgot password?"
+                android:padding="@dimen/_5sdp"
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_password" />
+                app:layout_constraintTop_toBottomOf="@id/layout_password"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                />
 
             <TextView
                 android:id="@+id/tv_verifyAccount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
                 android:text="Verify your account"
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_password" />
+                app:layout_constraintTop_toBottomOf="@id/layout_password"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                />
 
             <TextView
                 android:id="@+id/tv_signInErrors"

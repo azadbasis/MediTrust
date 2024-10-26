@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account.presentation.view.AccountSettingsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/contact_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_theme_surface_mediumContrast"
+        android:fitsSystemWindows="true"
+        android:visibility="visible">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:visibility="visible"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="@drawable/ic_keyboard_backspace"
+            app:navigationIconTint="@color/colorMediTrust"
+            app:title="Settings"
+            app:titleTextColor="@color/colorMediTrust" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:isScrollContainer="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="@dimen/_200sdp">
+            <!--  <FrameLayout
+                  android:id="@+id/fragment_container"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/colorBlack" />-->
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_profile_avatar"
+                app:civ_border_color="@color/md_theme_primary_mediumContrast"
+                app:civ_border_width="@dimen/_1sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="VectorDrawableCompat" />
+
+
+            <TextView
+                android:id="@+id/tv_profileName"
+                style="?textAppearanceBody1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="Azharul Islam"
+                android:textColor="?attr/colorOnSurface"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
+                app:layout_constraintTop_toTopOf="@+id/profile_image" />
+
+            <TextView
+                android:id="@+id/tv_profileTypeName"
+                style="?textAppearanceCaption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="Doctor"
+                android:textColor="@color/material_on_surface_emphasis_medium"
+                app:layout_constraintStart_toStartOf="@+id/tv_profileName"
+                app:layout_constraintTop_toBottomOf="@+id/tv_profileName" />
+
+            <View
+                android:id="@+id/view_dot"
+                style="?textAppearanceCaption"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:background="#99000000"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_profileTypeName"
+                app:layout_constraintStart_toEndOf="@+id/tv_profileTypeName"
+                app:layout_constraintTop_toTopOf="@+id/tv_profileTypeName"
+                app:layout_constraintEnd_toStartOf="@+id/layout_profileEdit"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/layout_profileEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/view_dot"
+                app:layout_constraintStart_toEndOf="@+id/view_dot"
+                app:layout_constraintTop_toTopOf="@+id/view_dot" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="edit profile"
+                    android:textColor="@color/material_on_surface_emphasis_medium" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_outline_edit_24"
+                    app:iconTint="@android:color/black"  />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_headerProfile"
+                style="?textAppearanceCaption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Profile"
+                android:textColor="@color/material_on_surface_emphasis_medium"
+                app:layout_constraintStart_toStartOf="@id/tv_profileTypeName"
+                app:layout_constraintTop_toBottomOf="@id/tv_profileTypeName" />
+
+            <TextView
+                android:id="@+id/tv_profileRate"
+                style="?textAppearanceCaption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="100%"
+                android:textColor="@color/colorMediTrust"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_headerProfile"
+                app:layout_constraintStart_toEndOf="@+id/tv_headerProfile"
+                app:layout_constraintTop_toTopOf="@+id/tv_headerProfile" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/bar_profileStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:progress="100"
+                android:layout_marginEnd="@dimen/_20sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_headerProfile"
+                app:layout_constraintTop_toBottomOf="@id/tv_headerProfile" />
+
+            <HorizontalScrollView
+                android:id="@+id/hrz_customerPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroup_user_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    app:singleLine="true"
+                    app:singleSelection="true">
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_upgradePlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:layout_constraintTop_toBottomOf="@+id/bar_profileStatus" />
+
+            <TextView
+
+                android:id="@+id/tv_storeSetup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Medi Trust setup"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_upgradePlan" />
+
+            <LinearLayout
+
+                android:id="@+id/layout_categorySetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_storeSetup">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Doctor profile setup"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_outline_edit_24"
+                    app:iconTint="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/layout_productSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@id/layout_categorySetup">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Patient profile setup"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_outline_edit_24"
+                    app:iconTint="@android:color/black"  />
+            </LinearLayout>
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_languageSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:layout_goneMarginTop="@dimen/_1sdp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_productSetup" />
+
+            <TextView
+                android:id="@+id/tv_aboutSoluta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="About medi trust"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_languageSetup" />
+
+            <LinearLayout
+                android:id="@+id/layout_HelpContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aboutSoluta">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Help"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_message_outline"
+                    app:iconTint="@android:color/black"  />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_rateAppContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_HelpContainer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rate on the play store"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_market_place"
+                    app:iconTint="@android:color/black" />
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_aboutSolutaSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_rateAppContainer" />
+
+            <TextView
+                android:id="@+id/tv_aboutControls"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="App controls"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_aboutSolutaSetup" />
+
+            <LinearLayout
+                android:id="@+id/layout_syncContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aboutControls">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Change email"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/outline_alternate_email_24"
+                    app:iconTint="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_changePasswordContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_syncContainer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Change password"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_baseline_lock_open_24"
+                    app:iconTint="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_signOutContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_changePasswordContainer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sign out"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#1ACFCFCF"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_baseline_exit_to_app_24"
+                    app:iconTint="@android:color/black" />
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_appControlsSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_signOutContainer" />
+
+            <TextView
+                android:id="@+id/tv_appVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:text="Version 1.0.1"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_appControlsSetup" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

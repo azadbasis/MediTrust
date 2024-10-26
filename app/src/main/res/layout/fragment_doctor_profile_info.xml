@@ -51,7 +51,8 @@
                 android:layout_height="@dimen/_70sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/md_theme_surfaceContainer"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
                 android:src="@drawable/ic_profile_avatar"
                 app:contentPadding="@dimen/_5sdp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,7 @@
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
             <Button
-                android:id="@+id/tv_add_image"
+                android:id="@+id/btn_add_image"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -76,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
-                app:constraint_referenced_ids="img_profile,tv_add_image" />
+                app:constraint_referenced_ids="img_profile,btn_add_image" />
 
             <TextView
                 android:id="@+id/tv_basicInfo"
@@ -116,6 +117,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_titleHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Dr,Prof Dr"
@@ -147,6 +149,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_nameHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Azharul Islam"
@@ -177,6 +180,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_doctorTypeHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_doctorType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Medical"
@@ -207,6 +211,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_specialityHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_speciality"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cardiologist"
@@ -238,6 +243,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_experienceHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                 android:id="@+id/input_experience"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="1"
@@ -270,6 +276,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_licenseHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_medicalLicense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="39482"
@@ -358,6 +365,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_clinicNameHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                  android:id="@+id/input_clinicName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="PG Hospital"
@@ -389,6 +397,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_clinicAddressHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_clinicAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Shahbag Dhaka"
@@ -419,8 +428,10 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_consultationFeeHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                  android:id="@+id/input_consultationFee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="$ 1000"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -449,9 +460,11 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_availabilityHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_availability"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Fri, Sat, Sun"
+                    android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -497,6 +510,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_phoneNumberHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                  android:id="@+id/input_phoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="017xxxxxx"
@@ -528,8 +542,10 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_emailHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                 android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:hint="azharul@email.com"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
 
@@ -575,6 +591,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_dobHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="20 April 1999"
@@ -604,6 +621,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_aboutMeHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_aboutMe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tell about yourself"
@@ -633,6 +651,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_degreeHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_degree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="M.B.B.S"
@@ -661,6 +680,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_awardHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_award"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Megsas award"
@@ -689,6 +709,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_languageHint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/input_language"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Bangla, English"
@@ -698,5 +719,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.meditrust.findadoctor
+package com.meditrust.findadoctor.core.util
 
 import android.content.Context
 import androidx.datastore.preferences.core.*

@@ -45,5 +45,9 @@
     <string name="sign_in_short">Sign in</string>
     <string name="choose_an_image"><u>Choose an image</u></string>
     <string name="save"><u>Save</u></string>
+    <string name="take_photo">Take photo</string>
+    <string name="choose_gallery">Choose from gallery</string>
+    <string name="choose_photo">Choose your picture</string>
+    <string name="mp_cancel">Cancel</string>
 
 </resources>

@@ -5,6 +5,7 @@ plugins {
     id("androidx.navigation.safeargs")
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -49,6 +50,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.database)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -63,7 +65,7 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-auth")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
-
+    implementation("com.google.firebase:firebase-storage")
     // ViewModel +  LiveData+ Lifecycles only (without ViewModel or LiveData)+ Saved state module for ViewModel
     val lifecycle_version = "2.6.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
@@ -85,7 +87,21 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:$dagger_hilt_version")
 
     //Timber
-    implementation ("com.jakewharton.timber:timber:5.0.1")
+    implementation("com.jakewharton.timber:timber:5.0.1")
+
+    // CameraX core library using the camera2 implementation
+    val camerax_version = "1.5.0-alpha02"
+    implementation("androidx.camera:camera-camera2:${camerax_version}")
+    // If you want to additionally use the CameraX Lifecycle library
+    implementation("androidx.camera:camera-lifecycle:${camerax_version}")
+    // If you want to additionally use the CameraX View class
+    implementation("androidx.camera:camera-view:${camerax_version}")
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
 }
 
 

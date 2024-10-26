@@ -53,7 +53,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="Log in or sign up to continue:"
+        android:text="Sign in or sign up to continue:"
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         app:layout_constraintStart_toStartOf="@id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@id/tv_started" />

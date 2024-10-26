@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".auth.presentation.backauth.BackAuthFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_20sdp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
+
+    <Button
+        android:id="@+id/btn_backWelcome"
+        style="@style/Widget.Material3.Button.TonalButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:backgroundTint="@android:color/transparent"
+        android:gravity="center"
+        android:contentDescription="@string/back_to_welcome"
+        app:icon="@drawable/ic_keyboard_backspace"
+        app:iconTint="@color/colorMediTrust"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_started"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:text="Get started"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/btn_backWelcome" />
+
+    <TextView
+        android:id="@+id/tv_login_or_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Sign in or sign up to continue:"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_started" />
+
+    <TextView
+        android:id="@+id/tv_book_a_doctor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_check"
+        android:drawablePadding="@dimen/_10sdp"
+        android:drawableTint="@color/colorMediTrust"
+        android:text="Easily find and book a doctor"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_or_signup" />
+
+    <TextView
+        android:id="@+id/tv_completeFaster"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_check"
+        android:drawablePadding="@dimen/_10sdp"
+        android:drawableTint="@color/colorMediTrust"
+        android:text="Book and complete forms faster"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_book_a_doctor" />
+
+    <TextView
+        android:id="@+id/tv_personaliseExperience"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableStart="@drawable/ic_check"
+        android:drawablePadding="@dimen/_10sdp"
+        android:drawableTint="@color/colorMediTrust"
+        android:text="Get a personalised online experience"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_completeFaster" />
+
+    <Button
+        android:id="@+id/btn_email_login"
+        style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Continue with Email"
+        app:icon="@drawable/ic_email"
+        app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_personaliseExperience" />
+
+    <Button
+        android:id="@+id/btn_signUp"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Sign up"
+        app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/btn_email_login" />
+
+    <TextView
+        android:id="@+id/tv_terms_policy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center"
+        android:text="By continuing, you agree to our Terms of Use and Privacy Policy."
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/btn_signUp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
