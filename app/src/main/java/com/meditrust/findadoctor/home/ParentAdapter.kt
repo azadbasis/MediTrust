@@ -28,9 +28,10 @@ class ParentAdapter (private  var data: MutableList<List<Any>>, private val scre
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-                is Doctor -> GridLayoutManager(
+                is Doctor ->  LinearLayoutManager(
                     itemView.context,
-                    2 // Span count of 2 for two items per row
+                    LinearLayoutManager.VERTICAL,
+                    false
                 )
                 else -> LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
             }

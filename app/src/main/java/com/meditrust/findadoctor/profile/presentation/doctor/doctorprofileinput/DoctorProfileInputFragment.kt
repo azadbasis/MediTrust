@@ -1,5 +1,6 @@
-package com.meditrust.findadoctor.profile.presentation.doctor
+package com.meditrust.findadoctor.profile.presentation.doctor.doctorprofileinput
 
+import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -26,18 +27,17 @@ import com.meditrust.findadoctor.core.util.FilePaths.FIREBASE_DOCTOR_IMAGE_STORA
 import com.meditrust.findadoctor.profile.dialog.CameraxBottomSheet
 import com.meditrust.findadoctor.core.util.PersistenceUtil
 import com.meditrust.findadoctor.core.util.UserGenders
-import com.meditrust.findadoctor.core.util.UserRoles
 import com.meditrust.findadoctor.core.util.hideKeyboard
-import com.meditrust.findadoctor.databinding.FragmentDoctorProfileInfoBinding
+import com.meditrust.findadoctor.databinding.FragmentDoctorProfileInputBinding
 import com.meditrust.findadoctor.profile.data.model.Doctor
 import com.meditrust.findadoctor.profile.viewmodel.DoctorProfileViewModel
 import com.meditrust.findadoctor.profile.viewmodel.SharedViewModel
 import timber.log.Timber
 
 
-class DoctorProfileInfoFragment : Fragment() {
+class DoctorProfileInputFragment : Fragment() {
 
-    private var _binding: FragmentDoctorProfileInfoBinding? = null
+    private var _binding: FragmentDoctorProfileInputBinding? = null
     private val binding get() = _binding!!
     private lateinit var persistenceUtil: PersistenceUtil
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -57,7 +57,7 @@ class DoctorProfileInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDoctorProfileInfoBinding.inflate(inflater, container, false)
+        _binding = FragmentDoctorProfileInputBinding.inflate(inflater, container, false)
         toggleProgressBar(false)
         setupValidation()
         setupImageObserver()
@@ -334,32 +334,32 @@ class DoctorProfileInfoFragment : Fragment() {
 
     private fun checkPermissions(): Boolean {
         val cameraGranted = ContextCompat.checkSelfPermission(
-            requireActivity(), android.Manifest.permission.CAMERA
+            requireActivity(), Manifest.permission.CAMERA
         ) == PackageManager.PERMISSION_GRANTED
 
 
         val perms = mutableListOf<String>()
         if (!cameraGranted) {
-            perms.add(android.Manifest.permission.CAMERA)
+            perms.add(Manifest.permission.CAMERA)
         }
 
         // Check for storage access on Android 14
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // Option 1: Request specific media access (recommended)
-            if (!hasPermission(android.Manifest.permission.READ_MEDIA_VIDEO) && !hasPermission(
-                    android.Manifest.permission.READ_MEDIA_IMAGES
+            if (!hasPermission(Manifest.permission.READ_MEDIA_VIDEO) && !hasPermission(
+                    Manifest.permission.READ_MEDIA_IMAGES
                 )
             ) {
-                perms.add(android.Manifest.permission.READ_MEDIA_VIDEO)
-                perms.add(android.Manifest.permission.READ_MEDIA_IMAGES)
+                perms.add(Manifest.permission.READ_MEDIA_VIDEO)
+                perms.add(Manifest.permission.READ_MEDIA_IMAGES)
             }
         } else {
             // Option 2: Request broader storage access (use with caution)
             if (ContextCompat.checkSelfPermission(
-                    requireActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    requireActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                perms.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                perms.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         }
 

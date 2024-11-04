@@ -72,12 +72,13 @@ class FindBookFragment : Fragment(), FindBookDoctorsAdapter.OnDoctorClickListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvDoctorList.apply {
+       /* binding.rvDoctorList.apply {
             val numberOfColumns = 2
             // Use a GridLayoutManager instead of LinearLayoutManager
             layoutManager = GridLayoutManager(context, numberOfColumns)
             adapter = findBookDoctorsAdapter
-        }
+        }*/
+        binding.rvDoctorList.adapter = findBookDoctorsAdapter
         loadAllDoctors()
 
     }

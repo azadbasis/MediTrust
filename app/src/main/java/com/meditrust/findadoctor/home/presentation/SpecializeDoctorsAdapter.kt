@@ -33,19 +33,20 @@ class SpecializeDoctorsAdapter(
                     if (selectedItems.contains(product)) {
                         // Item is already selected, so deselect it
                         selectedItems.remove(product)
-                        binding.imgAddItem.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.ic_add
-                            )
-                        )
-                    } else {
-                        // Item is not selected, so select it
-                        selectedItems.add(product)
-                        binding.imgAddItem.setImageDrawable(
+                        binding.imgBookmarkDoctor.setImageDrawable(
                             ContextCompat.getDrawable(
                                 itemView.context,
                                 R.drawable.ic_check
+                            )
+                        )
+
+                    } else {
+                        // Item is not selected, so select it
+                        selectedItems.add(product)
+                        binding.imgBookmarkDoctor.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                itemView.context,
+                                R.drawable.ic_bookmark
                             )
                         )
                     }
@@ -55,15 +56,16 @@ class SpecializeDoctorsAdapter(
         }
 
         fun bind(doctor: Doctor) {
-            binding.tvProductName.text = doctor.name
-            binding.tvCategoryName.text = doctor.specialization
-            binding.stockLabel.text = "${doctor.clinic_name}"
-            // Assuming imgAddNew is the ImageView inside your layout
-            // Glide.with(binding.imgAddNew.context).load(product.imageUrl).into(binding.imgAddNew)
+            //4.5(120 reviews)
+            val specializationExperience = "${doctor.specialization}. Experiance ${doctor.experience} years"
+            binding.tvDoctorRating.text = "${doctor.average_rating} (${doctor.ratings_count} reviews)"
+            binding.tvDoctorName.text = doctor.name
+            binding.tvCategoryName.text = specializationExperience
+         //   binding.stockLabel.text = "${doctor.clinic_name}"
             Glide.with(itemView.context)
                 .load(doctor.profile_image)
                 .placeholder(R.drawable.ic_profile_avatar)
-                .into(binding.imgAddNew)
+                .into(binding.imgDoctor)
         }
     }
 

@@ -34,21 +34,11 @@ class BookedDoctorsAdapter(
                     if (selectedItems.contains(product)) {
                         // Item is already selected, so deselect it
                         selectedItems.remove(product)
-                        binding.imgAddItem.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.ic_add
-                            )
-                        )
+
                     } else {
                         // Item is not selected, so select it
                         selectedItems.add(product)
-                        binding.imgAddItem.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.ic_check
-                            )
-                        )
+
                     }
 
                 }
@@ -56,8 +46,8 @@ class BookedDoctorsAdapter(
         }
 
         fun bind(doctor: Doctor) {
-            binding.tvProductName.text = doctor.name
-            binding.tvCategoryName.text = doctor.specialization
+            binding.tvDoctorName.text = doctor.name
+            binding.tvDoctorSpecialization.text = doctor.specialization
             binding.stockLabel.text = "${doctor.clinic_name}"
             // Assuming imgAddNew is the ImageView inside your layout
             // Glide.with(binding.imgAddNew.context).load(product.imageUrl).into(binding.imgAddNew)

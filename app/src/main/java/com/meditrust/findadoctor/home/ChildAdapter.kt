@@ -92,12 +92,7 @@ class ChildAdapter(
         when (val item = items[position]) {
             is Doctor -> {
                 // Correct casting for DoctorsViewHolder
-                (holder as DoctorsViewHolder).apply {
-                    val layoutParams = itemView.layoutParams
-                    layoutParams.width = screenWidth / 2 - 40
-                    itemView.layoutParams = layoutParams
-                    bind(item)
-                }
+                (holder as DoctorsViewHolder).bind(item)
             }
             is TopRatedDoctor -> {
                 // Correct casting for TopRatedDoctorsViewHolder
@@ -161,7 +156,7 @@ class DoctorsViewHolder(
                 if (selectedItems.contains(items[position])) {
                     // Item is already selected, so deselect it
                     selectedItems.remove(items[position])
-                    binding.imgAddItem.setImageDrawable(
+                    binding.imgBookmarkDoctor.setImageDrawable(
                         ContextCompat.getDrawable(
                             itemView.context,
                             R.drawable.ic_add
@@ -170,7 +165,7 @@ class DoctorsViewHolder(
                 } else {
                     // Item is not selected, so select it
                     selectedItems.add(items[position] as Doctor)
-                    binding.imgAddItem.setImageDrawable(
+                    binding.imgBookmarkDoctor.setImageDrawable(
                         ContextCompat.getDrawable(
                             itemView.context,
                             R.drawable.ic_check
@@ -183,13 +178,14 @@ class DoctorsViewHolder(
     }
 
     fun bind(doctor: Doctor) {
-        binding.tvProductName.text = doctor.name
-        binding.tvDoctorSpecialization.text = doctor.specialization
-        binding.stockLabel.text = doctor.clinic_name
+        val specializationExperience = "${doctor.specialization}. Experiance ${doctor.experience} years"
+        binding.tvDoctorRating.text = "${doctor.average_rating} (${doctor.ratings_count} reviews)"
+        binding.tvDoctorName.text = doctor.name
+        binding.tvCategoryName.text = specializationExperience
         Glide.with(itemView.context)
             .load(doctor.profile_image)
             .placeholder(R.drawable.ic_profile_avatar)
-            .into(binding.imgAddNew)
+            .into(binding.imgDoctor)
     }
 }
 class TopRatedDoctorsViewHolder(
@@ -216,7 +212,7 @@ class TopRatedDoctorsViewHolder(
                     binding.imgAddItem.setImageDrawable(
                         ContextCompat.getDrawable(
                             itemView.context,
-                            R.drawable.ic_add
+                            R.drawable.ic_check
                         )
                     )
                 } else {
@@ -225,7 +221,7 @@ class TopRatedDoctorsViewHolder(
                     binding.imgAddItem.setImageDrawable(
                         ContextCompat.getDrawable(
                             itemView.context,
-                            R.drawable.ic_check
+                            R.drawable.ic_bookmark
                         )
                     )
                     listener.onAddToCartClick(items[position] as TopRatedDoctor)

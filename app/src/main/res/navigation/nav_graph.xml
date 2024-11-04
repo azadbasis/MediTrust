@@ -134,9 +134,9 @@
     </dialog>
     <fragment
         android:id="@+id/doctorProfileInfoFragment"
-        android:name="com.meditrust.findadoctor.profile.presentation.doctor.DoctorProfileInfoFragment"
+        android:name="com.meditrust.findadoctor.profile.presentation.doctor.doctorprofileinput.DoctorProfileInputFragment"
         android:label="fragment_doctor_profile_info"
-        tools:layout="@layout/fragment_doctor_profile_info" >
+        tools:layout="@layout/fragment_doctor_profile_input" >
         <action
             android:id="@+id/action_doctorProfileInfoFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

@@ -71,11 +71,14 @@ class SpecializationDoctorsFragment : Fragment(), SpecializeDoctorsAdapter.OnPro
         return binding.root
     }
 
+    lateinit var specializationName: String
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Additional setup can be done here if needed
 
-        val specializationName = arguments?.getString("specializationName")
+        specializationName = arguments?.getString("specializationName").orEmpty()
+
         val colorHexCode = arguments?.getString("colorHexCode")
         val imageResId = arguments?.getInt("imageResource")
 
@@ -84,18 +87,19 @@ class SpecializationDoctorsFragment : Fragment(), SpecializeDoctorsAdapter.OnPro
             binding.albumImageView.setImageResource(it)
         }
         binding.tvSpecializationName.text = specializationName
+        binding.doctorCollapsingToolbar.title = specializationName
         
         binding.productToolbar.setNavigationOnClickListener {
             // Handle the back button press by navigating to the previous destination
             findNavController().navigateUp()
         }
-        binding.rvDoctorList.apply {
+      /*  binding.rvDoctorList.apply {
             val numberOfColumns = 2
             // Use a GridLayoutManager instead of LinearLayoutManager
             layoutManager = GridLayoutManager(context, numberOfColumns)
             adapter = specializedAdapter
-        }
-
+        }*/
+        binding.rvDoctorList.adapter = specializedAdapter
         findSpecializedDoctor(specializationName)
 
 
@@ -117,13 +121,7 @@ class SpecializationDoctorsFragment : Fragment(), SpecializeDoctorsAdapter.OnPro
             }
         })
     }
-    private fun generateDummyProducts(): List<Product> {
-        val products = mutableListOf<Product>()
-        for (i in 1..20) {
-            products.add(Product(i, "Product $i", "Category ${i % 5}", "imageUrl", i * 10000))
-        }
-        return products
-    }
+
 
     private fun findSpecializedDoctor(specializationName: String?) {
         val databaseRef = FirebaseDatabase.getInstance().getReference("doctors")
