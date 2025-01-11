@@ -22,7 +22,7 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_5sdp"
+       android:layout_height="@dimen/_10sdp"
         android:background="#DBDFDA" />
 
 </LinearLayout>

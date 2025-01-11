@@ -25,7 +25,7 @@
                 app:statusBarScrim="@color/md_theme_onSurfaceVariant_mediumContrast"
                 app:expandedTitleMarginStart="72dp"
                 app:expandedTitleMarginBottom="28dp"
-                app:title="Find and book doctor">
+                app:title="@string/find_and_book_doctor">
 
                 <LinearLayout
                     android:background="@color/md_theme_primary_mediumContrast"
@@ -54,7 +54,7 @@
                         android:maxLines="2"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:text="Find your doctor" />
+                        android:text="@string/find_your_doctor" />
 
                     <TextView
                         android:id="@+id/tv_caption"

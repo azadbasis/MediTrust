@@ -4,23 +4,18 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.meditrust.findadoctor.R
-import com.meditrust.findadoctor.core.util.UserGenders
 import com.meditrust.findadoctor.core.util.UserRoles
 import com.meditrust.findadoctor.databinding.FragmentAccountSettingsBinding
 import com.meditrust.findadoctor.profile.data.model.Admin
@@ -75,19 +70,22 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun appControlListener() {
-        with(binding){
+        with(binding.includeAppControlsSetup){
             layoutSignOutContainer.setOnClickListener {
                 signOut()
                 findNavController().navigate(R.id.action_accountSettingsFragment_to_loginFragment)
             }
+
+            layoutChangePasswordContainer.setOnClickListener{
+                findNavController().navigate(R.id.action_accountSettingsFragment_to_forgotPasswordBottomSheet)
+            }
+        }
+        with(binding.includeAboutMediTrustSetup){
             layoutRateAppContainer.setOnClickListener{
                 rateSoluta()
             }
             layoutHelpContainer.setOnClickListener{
                 findNavController().navigate(R.id.action_accountSettingsFragment_to_messageFragment)
-            }
-            layoutChangePasswordContainer.setOnClickListener{
-                findNavController().navigate(R.id.action_accountSettingsFragment_to_forgotPasswordBottomSheet)
             }
         }
     }
@@ -118,7 +116,7 @@ class AccountSettingsFragment : Fragment() {
 
     private fun populateDoctorFields(doctor: Doctor) {
 
-        with(binding) {
+        with(binding.includeProfileSection) {
             tvProfileName.text = doctor.title + " " + doctor.name
             tvProfileTypeName.text = doctor.user_role
             loadProfileImage(doctor.profile_image)
@@ -130,7 +128,7 @@ class AccountSettingsFragment : Fragment() {
 
         Glide.with(this)
             .load(if (imageUrl.isNotEmpty()) imageUrl else R.drawable.ic_profile_avatar)
-            .into(binding.profileImage)
+            .into(binding.includeProfileSection.imgProfile)
     }
 
     private fun setupToolbarNavigation() {
@@ -191,21 +189,23 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun accountSetupForPatient() {
-        with(binding){
+        with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.GONE
             layoutCategorySetup.visibility = View.GONE
             layoutProductSetup.visibility = View.GONE
+            dividerAdminSetup.visibility = View.GONE
         }
-      val uid = getCurrentUserId()
+        val uid = getCurrentUserId()
         fetchPatientData(uid)
 
     }
 
     private fun accountSetupForAdmin() {
-        with(binding){
+        with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.VISIBLE
             layoutCategorySetup.visibility = View.VISIBLE
             layoutProductSetup.visibility = View.VISIBLE
+            dividerAdminSetup.visibility = View.VISIBLE
         }
         val uid = getCurrentUserId()
         fetchAdminData(uid)
@@ -231,7 +231,7 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun setupAdminData(admin: Admin) {
-        with(binding){
+        with(binding.includeProfileSection){
             tvProfileName.text = admin.name
             tvProfileTypeName.text = admin.user_role
             loadProfileImage(admin.profile_image)
@@ -240,10 +240,11 @@ class AccountSettingsFragment : Fragment() {
 
 
     private fun accountSetupForDoctor() {
-        with(binding){
+        with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.GONE
             layoutCategorySetup.visibility = View.GONE
             layoutProductSetup.visibility = View.GONE
+            dividerAdminSetup.visibility = View.GONE
         }
         val uid = getCurrentUserId()
         observeDoctorData()
@@ -287,7 +288,7 @@ class AccountSettingsFragment : Fragment() {
 
 
     private fun setupPatientData(patient: Patient) {
-        with(binding){
+        with(binding.includeProfileSection){
             tvProfileName.text = patient.name
             tvProfileTypeName.text = patient.user_role
             loadProfileImage(patient.profile_image)

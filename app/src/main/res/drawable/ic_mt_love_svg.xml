@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Drawing "M" with Love Icon -->
+    <path
+        android:fillColor="@color/colorMediTrust"
+        android:pathData="M3,20V4h2l3,5l3-5h2v16h-2V9l-3,5l-3-5v11H3Z" />
+
+    <!-- Create 'Love' icon with 'T' character inside -->
+    <group>
+        <!-- Love Icon -->
+        <path
+            android:fillColor="@color/colorMediTrust"
+            android:pathData="M10,17.5c0-1.1-0.9-2-2-2s-2,0.9-2,2c0,0.7,0.4,1.4,1,1.7l1,0.6l1-0.6c0.6-0.3,1-1,1-1.7Z" />
+
+        <!-- 'T' Character inside Love -->
+        <path
+            android:fillColor="@color/md_theme_surfaceDim_highContrast"
+            android:pathData="M7.5,17.4v-1h1v1h0.5v0.5h-0.5v1h-1v-1h-0.5v-0.5h0.5Z" />
+    </group>
+
+
+</vector>

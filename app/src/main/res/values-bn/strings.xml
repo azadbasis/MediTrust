@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">MediTrust</string>
+
+    <!-- Authentication -->
+    <string name="sign_in_short">সাইন ইন করুন</string>
+    <string name="sign_up">নিবন্ধন করুন</string>
+    <string name="sign_up_prompt">একটি অ্যাকাউন্ট নেই? নিবন্ধন করুন</string>
+    <string name="sign_in_prompt">আগেই একটি অ্যাকাউন্ট আছে? সাইন ইন করুন</string>
+
+    <!-- Email and Password -->
+    <string name="email">ইমেইল</string>
+    <string name="password">পাসওয়ার্ড</string>
+    <string name="reset_password">পাসওয়ার্ড রিসেট করুন</string>
+    <string name="resend_verification_email">যাচাইকরণ ইমেইল পুনরায় পাঠান</string>
+    
+    <!-- Buttons -->
+    <string name="cancel">বাতিল</string>
+    <string name="confirm">নিশ্চিত করুন</string>
+    <string name="mp_cancel">বাতিল</string>
+    <string name="choose_an_image"><u>একটি ছবি বাছাই করুন</u></string>
+    <string name="save"><u>সংরক্ষণ করুন</u></string>
+    <string name="take_photo">ছবি তুলুন</string>
+    <string name="choose_gallery">গ্যালারি থেকে বাছাই করুন</string>
+    <string name="choose_photo">আপনার ছবি নির্বাচন করুন</string>
+    
+    <!-- Miscellaneous -->
+    <string name="back_to_welcome">স্বাগত স্ক্রীনে ফিরে যান</string>
+    <string name="get_better_connected_to_healthcare">স্বাস্থ্যসেবার সাথে আরও ভালভাবে যুক্ত হোন</string>
+    <string name="get_started">শুরু করুন</string>
+    <string name="find_your_doctor">আপনার ডাক্তার খুঁজুন</string>
+    <string name="find_and_book_doctor">ডাক্তার খুঁজুন এবং বুক করুন</string>
+
+    <!-- Existing Strings -->
+    <string name="profile_incomplete_title">60% Complete - Finalize Your Profile for Review</string>
+    <string name="profile_incomplete_message">Complete your profile to submit for admin review. Once approved, your profile will be activated and visible to patients.</string>
+    <string name="profile_pending_review_title">100% Complete - Profile Ready for Review</string>
+    <string name="profile_pending_review_message">Your profile is now complete and has been submitted for admin review. Once approved, it will be activated and visible to patients. Thank you for completing your profile!</string>
+    <string name="profile_activated_title">Profile Activated - Now Live!</string>
+    <string name="profile_activated_message">Congratulations! Your profile has been successfully activated and is now visible to patients. Start connecting with patients and providing exceptional care today!</string>
+
+    <!-- New Strings -->
+    <string name="admin_activated_title">Profile Activated - Full Access Granted</string>
+    <string name="admin_activated_message">Your profile is fully activated. You have full access to admin features and functionalities to manage the platform effectively.</string>
+
+    <string name="patient_activated_title">Profile Activated - Enjoy Full Access</string>
+    <string name="patient_activated_message">Your profile is active. You can explore all features, connect with doctors, and manage your appointments seamlessly.</string>
+
+    <string name="patient_restricted_title">Profile Restricted - Access Limited</string>
+    <string name="patient_restricted_message">Your profile has been restricted due to a violation of our guidelines. Please contact support for further assistance or to resolve this issue.</string>
+
+</resources>

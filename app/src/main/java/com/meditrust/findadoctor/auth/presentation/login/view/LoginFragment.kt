@@ -1,7 +1,6 @@
 package com.meditrust.findadoctor.auth.presentation.login.view
 
 import android.graphics.Paint
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableString
@@ -12,18 +11,27 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.translation.Translator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.meditrust.findadoctor.R
+import com.meditrust.findadoctor.core.data.model.ChatGPTRequest
+import com.meditrust.findadoctor.core.data.model.ChatGPTResponse
+import com.meditrust.findadoctor.core.data.model.Message
+import com.meditrust.findadoctor.core.data.source.remote.RetrofitInstance
+import com.meditrust.findadoctor.core.util.ChatGptUtils
 import com.meditrust.findadoctor.core.util.NoUnderlineClickableSpan
 import com.meditrust.findadoctor.core.util.PersistenceUtil
 import com.meditrust.findadoctor.core.util.TextViewUtils
 import com.meditrust.findadoctor.core.util.UserRoles
 import com.meditrust.findadoctor.core.util.hideKeyboard
 import com.meditrust.findadoctor.databinding.FragmentLoginBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginFragment : Fragment() {
@@ -120,6 +128,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun loginListener(view: View) {
+        //azharulislamtech@gmail.com->azharul121839
         binding.btnContinue.setOnClickListener {
             binding.btnContinue.isEnabled = false
             hideKeyboard(view)
@@ -151,6 +160,39 @@ class LoginFragment : Fragment() {
                 binding.tvSignInErrors.text = "You didn't fill in all the fields."
                 binding.btnContinue.isEnabled = true
             }
+
+            //  checkChatGPTResponse(email)
+
+
+        }
+    }
+
+
+    private fun checkChatGPTResponse(userInput: String) {
+        if (userInput.isNotEmpty()) {
+            val request = ChatGPTRequest(
+                model = ChatGptUtils.MODEL,
+                messages = listOf(Message(role = "user", content = userInput))
+            )
+
+            RetrofitInstance.api.getChatResponse(request)
+                .enqueue(object : Callback<ChatGPTResponse> {
+                    override fun onResponse(
+                        call: Call<ChatGPTResponse>,
+                        response: Response<ChatGPTResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val reply = response.body()?.choices?.firstOrNull()?.message?.content
+                            binding.tvSignInErrors.text = reply ?: "No response"
+                        } else {
+                            binding.tvSignInErrors.text = "Error: ${response.errorBody()?.string()}"
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ChatGPTResponse>, t: Throwable) {
+                        binding.tvSignInErrors.text = "Failure: ${t.message}"
+                    }
+                })
         }
     }
 
@@ -268,4 +310,45 @@ class LoginFragment : Fragment() {
         _binding = null
     }
 
+    // Function to transliterate an English sentence to Bangla phonetic representation
+    fun transliterateToBangla(englishText: String): String {
+        val words = englishText.split(" ")
+        val banglaText = words.joinToString(" ") { word ->
+            transliterationMap[word] ?: word.map { char ->
+                transliterationMap[char.toString()] ?: char.toString()
+            }.joinToString("")
+        }
+        return banglaText
+    }
+
+    val transliterationMap = mapOf(
+        "a" to "আ",
+        "b" to "ব",
+        "c" to "স",
+        "d" to "ড",
+        "e" to "ই",
+        "f" to "এফ",
+        "g" to "জি",
+        "h" to "এইচ",
+        "i" to "আই",
+        "j" to "জে",
+        "k" to "কে",
+        "l" to "এল",
+        "m" to "এম",
+        "n" to "এন",
+        "o" to "ও",
+        "p" to "পি",
+        "q" to "কিউ",
+        "r" to "আর",
+        "s" to "এস",
+        "t" to "টি",
+        "u" to "উ",
+        "v" to "ভি",
+        "w" to "ডব্লিউ",
+        "x" to "এক্স",
+        "y" to "ওয়াই",
+        "z" to "জেড",
+        "How are you?" to "হাউ আর ইউ?",
+        "Hello" to "হ্যালো"
+    )
 }

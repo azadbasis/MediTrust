@@ -1,53 +1,53 @@
 <resources>
+    <!-- App Information -->
     <string name="app_name">MediTrust</string>
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="resend_verification_email">Resend Verification Email</string>
-    <string name="forgot_password">Forgot Password</string>
-    <string name="register">Register</string>
-    <string name="sign_in">Sign In</string>
-    <string name="password">Password</string>
-    <string name="tabian_consulting_logo">Tabian Consulting Logo</string>
-    <string name="email_registration">Email Registration</string>
+    
+    <!-- User Authentication -->
     <string name="email">Email</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="employee_dashboard">Employee Dashboard</string>
-    <string name="this_week_s_initiatives">This week\'s initiatives</string>
-    <string name="employee_schedule">Employee Schedule</string>
-    <string name="company_culture">Company Culture</string>
-    <string name="tabian_consulting_sales_chart">Tabian Consulting Sales Chart</string>
-    <string name="cancel">CANCEL</string>
-    <string name="confirm">CONFIRM</string>
-    <string name="reset_password">Reset Password</string>
-    <string name="sign_out">Sign out</string>
-    <string name="account_settings">Account Settings</string>
-    <string name="current_password">Current Password</string>
-    <string name="new_password">New Password</string>
-    <string name="confirm_new_password">Confirm New Password</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="get_better_connected_to_healthcare">Get better connected to healthcare</string>
-    <string name="get_started">Get started</string>
-    <string name="sign_up_prompt">Don\'t have an account? Sign up</string>
+    <string name="password">Password</string>
+    <string name="sign_up_prompt">Don’t have an account? Sign up</string>
     <string name="sign_up">Sign up</string>
-    <string name="back_to_welcome">Back to Welcome Screen</string>
     <string name="sign_in_prompt">Already have an account? Sign in</string>
     <string name="sign_in_short">Sign in</string>
+    <string name="resend_verification_email">Resend Verification Email</string>
+    <string name="reset_password">Reset Password</string>
+    
+    <!-- Navigation -->
+    <string name="back_to_welcome">Back to Welcome Screen</string>
+    <string name="get_started">Get started</string>
+    
+    <!-- Image Selection -->
     <string name="choose_an_image"><u>Choose an image</u></string>
     <string name="save"><u>Save</u></string>
     <string name="take_photo">Take photo</string>
     <string name="choose_gallery">Choose from gallery</string>
     <string name="choose_photo">Choose your picture</string>
+
+    <!-- Miscellaneous -->
+    <string name="cancel">CANCEL</string>
+    <string name="confirm">CONFIRM</string>
     <string name="mp_cancel">Cancel</string>
+    <string name="get_better_connected_to_healthcare">Get better connected to healthcare</string>
+    <string name="find_your_doctor">Find your doctor</string>
+    <string name="find_and_book_doctor">Find and book doctor</string>
+
+    <!-- Existing Strings -->
+    <string name="profile_incomplete_title">60% Complete - Finalize Your Profile for Review</string>
+    <string name="profile_incomplete_message">Complete your profile to submit for admin review. Once approved, your profile will be activated and visible to patients.</string>
+    <string name="profile_pending_review_title">100% Complete - Profile Ready for Review</string>
+    <string name="profile_pending_review_message">Your profile is now complete and has been submitted for admin review. Once approved, it will be activated and visible to patients. Thank you for completing your profile!</string>
+    <string name="profile_activated_title">Profile Activated - Now Live!</string>
+    <string name="profile_activated_message">Congratulations! Your profile has been successfully activated and is now visible to patients. Start connecting with patients and providing exceptional care today!</string>
+
+    <!-- New Strings -->
+    <string name="admin_activated_title">Profile Activated - Full Access Granted</string>
+    <string name="admin_activated_message">Your profile is fully activated. You have full access to admin features and functionalities to manage the platform effectively.</string>
+
+    <string name="patient_activated_title">Profile Activated - Enjoy Full Access</string>
+    <string name="patient_activated_message">Your profile is active. You can explore all features, connect with doctors, and manage your appointments seamlessly.</string>
+
+    <string name="patient_restricted_title">Profile Restricted - Access Limited</string>
+    <string name="patient_restricted_message">Your profile has been restricted due to a violation of our guidelines. Please contact support for further assistance or to resolve this issue.</string>
+
 
 </resources>

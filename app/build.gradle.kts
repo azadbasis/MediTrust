@@ -6,6 +6,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
     id ("kotlin-parcelize")
+
 }
 
 android {
@@ -18,9 +19,12 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        resourceConfigurations += listOf("en", "bn")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
+
     buildFeatures {
         viewBinding = true
     }
@@ -33,6 +37,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -42,6 +47,7 @@ android {
     }
 
 }
+
 
 dependencies {
 
@@ -101,6 +107,11 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
 
 }
 

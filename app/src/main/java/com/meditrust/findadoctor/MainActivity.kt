@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.meditrust.findadoctor.core.util.DatastoreUtil
 import com.meditrust.findadoctor.core.util.PersistenceUtil
 import com.meditrust.findadoctor.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var datastoreUtil: DatastoreUtil
     private lateinit var persistenceUtil: PersistenceUtil
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition { false }
@@ -34,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         // Initialize the binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.bottomNavigationView.visibility = View.GONE
         setupNavigation()
         setupObject()
@@ -41,12 +46,21 @@ class MainActivity : AppCompatActivity() {
 
         // Handle navigation based on onboarding completion
         handleInitialNavigation()
+        applySavedLanguage()
+
     }
+
+
+    private fun applySavedLanguage() {
+        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("bn")
+        AppCompatDelegate.setApplicationLocales(appLocale)
+    }
+
 
     private fun handleInitialNavigation() {
         if (!persistenceUtil.isOnboardingCompleted()) {
             // Navigate to Onboarding Fragment if not completed
-            navController.navigate(R.id.action_homeFragment_to_onBoardingFragment)
+            navController.navigate(R.id.onBoardingFragment)
         } else {
             // Navigate to Home Fragment if onboarding is completed
             navController.navigate(R.id.homeFragment)
@@ -54,17 +68,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigation() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
         binding.bottomNavigationView.setupWithNavController(navController)
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment ,R.id.findBookFragment ,R.id.bookingsFragment ,R.id.messageFragment -> {
+                R.id.homeFragment, R.id.findBookFragment, R.id.bookingsFragment, R.id.messageFragment -> {
                     binding.bottomNavigationView.visibility = View.VISIBLE
-                 //   fab.visibility = View.VISIBLE
+                    //   fab.visibility = View.VISIBLE
                 }
+
                 else -> {
                     binding.bottomNavigationView.visibility = View.GONE
 //                    fab.visibility = View.GONE
@@ -81,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupObject() {
         auth = FirebaseAuth.getInstance()
         datastoreUtil = DatastoreUtil.Companion.getInstance(this) // Initialize DatastoreUtil
-        persistenceUtil= PersistenceUtil(this)
+        persistenceUtil = PersistenceUtil(this)
     }
 
     private fun setupAuthStateListener() {
@@ -114,18 +130,21 @@ class MainActivity : AppCompatActivity() {
                 R.id.loginFragment
             } else {
                 R.id.onBoardingFragment
+
             }
             navController.navigate(destination)
         } else {
-            Log.d(TAG, "onAuthStateChanged:${if (currentUser.isAnonymous) "guest_user" else "signed_in"}:${currentUser.uid}")
+            Log.d(
+                TAG,
+                "onAuthStateChanged:${if (currentUser.isAnonymous) "guest_user" else "signed_in"}:${currentUser.uid}"
+            )
         }
     }
 
     override fun onResume() {
         super.onResume()
-       checkFirebaseAuthState()
+        checkFirebaseAuthState()
     }
 
-
-
+    
 }
