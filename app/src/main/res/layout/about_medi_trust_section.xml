@@ -5,18 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintTop_toBottomOf="@id/include_languageSetup"
     >
+
     <TextView
         android:id="@+id/tv_aboutMediTrust"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="About Medi Trust"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/layout_HelpContainer"
