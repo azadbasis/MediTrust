@@ -11,27 +11,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.translation.Translator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.meditrust.findadoctor.R
-import com.meditrust.findadoctor.core.data.model.ChatGPTRequest
-import com.meditrust.findadoctor.core.data.model.ChatGPTResponse
-import com.meditrust.findadoctor.core.data.model.Message
-import com.meditrust.findadoctor.core.data.source.remote.RetrofitInstance
-import com.meditrust.findadoctor.core.util.ChatGptUtils
 import com.meditrust.findadoctor.core.util.NoUnderlineClickableSpan
 import com.meditrust.findadoctor.core.util.PersistenceUtil
 import com.meditrust.findadoctor.core.util.TextViewUtils
 import com.meditrust.findadoctor.core.util.UserRoles
 import com.meditrust.findadoctor.core.util.hideKeyboard
 import com.meditrust.findadoctor.databinding.FragmentLoginBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class LoginFragment : Fragment() {
