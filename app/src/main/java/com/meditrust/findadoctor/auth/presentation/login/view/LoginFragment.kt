@@ -168,33 +168,7 @@ class LoginFragment : Fragment() {
     }
 
 
-    private fun checkChatGPTResponse(userInput: String) {
-        if (userInput.isNotEmpty()) {
-            val request = ChatGPTRequest(
-                model = ChatGptUtils.MODEL,
-                messages = listOf(Message(role = "user", content = userInput))
-            )
 
-            RetrofitInstance.api.getChatResponse(request)
-                .enqueue(object : Callback<ChatGPTResponse> {
-                    override fun onResponse(
-                        call: Call<ChatGPTResponse>,
-                        response: Response<ChatGPTResponse>
-                    ) {
-                        if (response.isSuccessful) {
-                            val reply = response.body()?.choices?.firstOrNull()?.message?.content
-                            binding.tvSignInErrors.text = reply ?: "No response"
-                        } else {
-                            binding.tvSignInErrors.text = "Error: ${response.errorBody()?.string()}"
-                        }
-                    }
-
-                    override fun onFailure(call: Call<ChatGPTResponse>, t: Throwable) {
-                        binding.tvSignInErrors.text = "Failure: ${t.message}"
-                    }
-                })
-        }
-    }
 
     private fun verifyAccount(user: FirebaseUser?) {
 
