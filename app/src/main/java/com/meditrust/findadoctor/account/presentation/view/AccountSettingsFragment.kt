@@ -191,9 +191,9 @@ class AccountSettingsFragment : Fragment() {
     private fun accountSetupForPatient() {
         with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.GONE
-            layoutCategorySetup.visibility = View.GONE
-            layoutProductSetup.visibility = View.GONE
-            dividerAdminSetup.visibility = View.GONE
+
+            layoutAdminControl.visibility = View.GONE
+
         }
         val uid = getCurrentUserId()
         fetchPatientData(uid)
@@ -203,9 +203,8 @@ class AccountSettingsFragment : Fragment() {
     private fun accountSetupForAdmin() {
         with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.VISIBLE
-            layoutCategorySetup.visibility = View.VISIBLE
-            layoutProductSetup.visibility = View.VISIBLE
-            dividerAdminSetup.visibility = View.VISIBLE
+            layoutAdminControl.visibility = View.VISIBLE
+
         }
         val uid = getCurrentUserId()
         fetchAdminData(uid)
@@ -242,9 +241,8 @@ class AccountSettingsFragment : Fragment() {
     private fun accountSetupForDoctor() {
         with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.GONE
-            layoutCategorySetup.visibility = View.GONE
-            layoutProductSetup.visibility = View.GONE
-            dividerAdminSetup.visibility = View.GONE
+            layoutAdminControl.visibility = View.GONE
+
         }
         val uid = getCurrentUserId()
         observeDoctorData()

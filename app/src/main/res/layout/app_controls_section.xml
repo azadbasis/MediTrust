@@ -1,119 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:layout_constraintTop_toBottomOf="@id/include_aboutMediTrustSetup"
-    >
+    app:layout_constraintTop_toBottomOf="@id/include_aboutMediTrustSetup">
+
     <TextView
         android:id="@+id/tv_aboutControls"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="App Controls"
         android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/layout_syncContainer"
+        android:id="@+id/layout_appControls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingStart="@dimen/_15sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_15sdp"
-        android:paddingBottom="@dimen/_5sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/custom_card_view_drawable"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/tv_aboutControls">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_syncContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Change email"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_5sdp">
+            <Button
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1ACFCFCF"
+                android:clickable="false"
+                app:icon="@drawable/outline_alternate_email_24"
+                app:iconTint="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change email"
+                android:paddingStart="@dimen/_10sdp"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
-        <Button
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-            android:layout_width="wrap_content"
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_forward_settings"
+               android:layout_gravity="center"
+               app:tint="@color/md_theme_primary"
+               />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="@dimen/_65sdp"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/layout_changePasswordContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#1ACFCFCF"
-            android:clickable="false"
-            app:icon="@drawable/outline_alternate_email_24"
-            app:iconTint="@android:color/black" />
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@+id/layout_syncContainer">
+            <Button
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1ACFCFCF"
+                android:clickable="false"
+                app:icon="@drawable/ic_baseline_lock_open_24"
+                app:iconTint="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change password"
+                android:paddingStart="@dimen/_10sdp"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_forward_settings"
+                android:layout_gravity="center"
+                app:tint="@color/md_theme_primary"
+                />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="@dimen/_65sdp"
+         />
+
+        <LinearLayout
+            android:id="@+id/layout_signOutContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@+id/layout_changePasswordContainer">
+            <Button
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1ACFCFCF"
+                android:clickable="false"
+                app:icon="@drawable/ic_baseline_exit_to_app_24"
+                app:iconTint="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sign out"
+                android:paddingStart="@dimen/_10sdp"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_forward_settings"
+                android:layout_gravity="center"
+                app:tint="@color/md_theme_primary"
+                />
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_changePasswordContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingStart="@dimen/_15sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_15sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_syncContainer">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Change password"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-        <Button
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#1ACFCFCF"
-            android:clickable="false"
-            app:icon="@drawable/ic_baseline_lock_open_24"
-            app:iconTint="@android:color/black" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_signOutContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingStart="@dimen/_15sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_15sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_changePasswordContainer">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sign out"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-        <Button
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#1ACFCFCF"
-            android:clickable="false"
-            app:icon="@drawable/ic_baseline_exit_to_app_24"
-            app:iconTint="@android:color/black" />
-    </LinearLayout>
-
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/divider_appControlsSetup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_signOutContainer" />
     <TextView
         android:id="@+id/tv_appVersion"
         android:layout_width="wrap_content"
@@ -124,6 +161,6 @@
         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_appControlsSetup" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_appControls" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

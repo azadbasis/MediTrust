@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintTop_toBottomOf="@id/include_profileVerification"
     >
@@ -10,34 +11,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="My Membership &amp; Health Plan"
         android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
        />
 
     <LinearLayout
-
         android:id="@+id/layout_planSetup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/custom_card_view_drawable"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/_15sdp"
+        android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_15sdp"
+        android:paddingEnd="@dimen/_5sdp"
         android:paddingBottom="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@id/tv_subscriptionPlan">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Membership"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+        app:layout_constraintTop_toBottomOf="@id/tv_subscriptionPlan"
+        tools:layout_editor_absoluteX="13dp">
 
         <Button
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
@@ -45,15 +41,34 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#1ACFCFCF"
             android:clickable="false"
-            app:icon="@drawable/ic_star_plan"
+            app:icon="@drawable/ic_verified"
             app:iconTint="@android:color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/_10sdp"
+            android:text="Membership"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:paddingEnd="@dimen/_5sdp"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_forward_settings"
+            android:layout_gravity="center"
+            app:tint="@color/md_theme_primary"
+            android:paddingEnd="@dimen/_10sdp"
+            />
     </LinearLayout>
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/divider_planSetup"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_planSetup"
-        app:layout_goneMarginTop="@dimen/_1sdp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

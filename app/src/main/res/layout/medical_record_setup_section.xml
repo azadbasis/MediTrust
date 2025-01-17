@@ -10,26 +10,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="My Health Data"
         android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
        />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/layout_healthRecord"
-        style="@style/Widget.Material3.CardView.Outlined"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/md_theme_onPrimary"
         android:orientation="horizontal"
-        app:cardBackgroundColor="@color/md_theme_surfaceContainer"
         app:layout_constraintTop_toBottomOf="@id/tv_healthRecord">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@android:color/black" />
+                app:tint="@color/md_theme_primary" />
 
             <TextView
                 android:id="@+id/tv_healthRecordTitle"
@@ -66,18 +66,21 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:text="Lab results and more"
                 app:layout_constraintStart_toStartOf="@+id/tv_healthRecordTitle"
-
                 app:layout_constraintTop_toBottomOf="@+id/tv_healthRecordTitle" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_forward_settings"
+                android:layout_gravity="center"
+                app:tint="@color/md_theme_primary"
+                android:paddingEnd="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/divider_healthRecord"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_25sdp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_healthRecord"
-        app:layout_goneMarginTop="@dimen/_1sdp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

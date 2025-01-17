@@ -10,14 +10,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="App Language"
         android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
+<LinearLayout
+    app:layout_constraintTop_toBottomOf="@+id/tv_appLanguage"
+    android:background="@drawable/custom_card_view_drawable"
+    android:layout_margin="@dimen/_10sdp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/layout_english"
         android:layout_width="match_parent"
@@ -29,15 +35,7 @@
         android:paddingTop="@dimen/_5sdp"
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_appLanguage">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="English"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
+      >
         <Button
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="wrap_content"
@@ -46,8 +44,29 @@
             android:clickable="false"
             app:icon="@drawable/ic_english_flag"
             app:iconTint="@null" />
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="English"
+            android:paddingStart="@dimen/_10sdp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_forward_settings"
+            android:layout_gravity="center"
+            app:tint="@color/md_theme_primary"
+            />
+    </LinearLayout>
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_languageSetup"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="@dimen/_65sdp"
+       />
     <LinearLayout
         android:id="@+id/layout_bangla"
         android:layout_width="match_parent"
@@ -60,14 +79,6 @@
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@+id/layout_english">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="বাংলা"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
         <Button
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="wrap_content"
@@ -76,12 +87,25 @@
             android:clickable="false"
             app:icon="@drawable/ic_bangladesh_flag"
             app:iconTint="@null" />
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="বাংলা"
+            android:paddingStart="@dimen/_10sdp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/divider_languageSetup"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_bangla" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_forward_settings"
+            android:layout_gravity="center"
+            app:tint="@color/md_theme_primary"
+            />
+    </LinearLayout>
+</LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
