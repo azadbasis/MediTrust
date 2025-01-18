@@ -32,6 +32,7 @@ class AccountSettingsFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: DoctorProfileViewModel by activityViewModels()
     private lateinit var auth: FirebaseAuth
+    private lateinit var currentUser: FirebaseUser  // Step 1: Define a property for currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,7 +117,7 @@ class AccountSettingsFragment : Fragment() {
 
     private fun populateDoctorFields(doctor: Doctor) {
 
-        with(binding.includeProfileSection) {
+        with(binding.includeProfileSection.includeProfileDoctor) {
             tvProfileName.text = doctor.title + " " + doctor.name
             tvProfileTypeName.text = doctor.user_role
             loadProfileImage(doctor.profile_image)
@@ -125,10 +126,16 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun loadProfileImage(imageUrl: String) {
-
+     //   binding.includeProfileSection.includeProfileDoctor.imgProfile
         Glide.with(this)
             .load(if (imageUrl.isNotEmpty()) imageUrl else R.drawable.ic_profile_avatar)
-            .into(binding.includeProfileSection.imgProfile)
+            .into(binding.includeProfileSection.includeProfileDoctor.imgProfile)
+        Glide.with(this)
+            .load(if (imageUrl.isNotEmpty()) imageUrl else R.drawable.ic_profile_avatar)
+            .into(binding.includeProfileSection.includeProfileAdmin.imgProfile)
+        Glide.with(this)
+            .load(if (imageUrl.isNotEmpty()) imageUrl else R.drawable.ic_profile_avatar)
+            .into(binding.includeProfileSection.includeProfilePatient.imgProfile)
     }
 
     private fun setupToolbarNavigation() {
@@ -141,22 +148,25 @@ class AccountSettingsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
     private fun checkFirebaseAuthState() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-
-        if (currentUser != null)
-            if (currentUser.isAnonymous) {
-                Log.d(TAG, "checkFirebaseAuthState: guest ${currentUser.uid}")
-                accountSetupForGuest(currentUser)
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            currentUser = user // Step 2: Initialize currentUser
+            if (user.isAnonymous) {
+                Log.d(TAG, "checkFirebaseAuthState: guest ${user.uid}")
+                accountSetupForGuest(user)
             } else {
-                Log.d(TAG, "checkFirebaseAuthState: authrize${currentUser.uid}")
-                accountSetupForDoctorAndAdmin(currentUser)
+                Log.d(TAG, "checkFirebaseAuthState: authrize ${user.uid}")
+                accountSetupForDoctorAndAdmin(user)
             }
+        }
     }
 
     private fun accountSetupForGuest(user: FirebaseUser) {
-
+        binding.includeAdminSetup.root.visibility = View.GONE
+        with(binding.includeProfileSection){
+            includeProfileGuest.cardProfileGuest.visibility = View.VISIBLE
+        }
     }
 
     private fun accountSetupForDoctorAndAdmin(user: FirebaseUser) {
@@ -189,11 +199,14 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun accountSetupForPatient() {
-        with(binding.includeAdminSetup){
+      /*  with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.GONE
-
             layoutAdminControl.visibility = View.GONE
 
+        }*/
+        binding.includeAdminSetup.root.visibility = View.GONE
+        with(binding.includeProfileSection){
+            includeProfilePatient.root.visibility = View.VISIBLE
         }
         val uid = getCurrentUserId()
         fetchPatientData(uid)
@@ -201,10 +214,14 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun accountSetupForAdmin() {
-        with(binding.includeAdminSetup){
+    /*    with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.VISIBLE
             layoutAdminControl.visibility = View.VISIBLE
 
+        }*/
+        binding.includeAdminSetup.root.visibility = View.VISIBLE
+        with(binding.includeProfileSection){
+            includeProfileAdmin.root.visibility = View.VISIBLE
         }
         val uid = getCurrentUserId()
         fetchAdminData(uid)
@@ -231,18 +248,23 @@ class AccountSettingsFragment : Fragment() {
 
     private fun setupAdminData(admin: Admin) {
         with(binding.includeProfileSection){
-            tvProfileName.text = admin.name
-            tvProfileTypeName.text = admin.user_role
+            includeProfileAdmin.tvProfileName.text = admin.name
+            includeProfileAdmin.tvProfileTypeName.text = admin.user_role
             loadProfileImage(admin.profile_image)
         }
     }
 
 
     private fun accountSetupForDoctor() {
-        with(binding.includeAdminSetup){
+      /*  with(binding.includeAdminSetup){
             tvStoreSetup.visibility = View.GONE
             layoutAdminControl.visibility = View.GONE
 
+        }*/
+        binding.includeAdminSetup.root.visibility = View.GONE
+
+        with(binding.includeProfileSection){
+            includeProfileDoctor.root.visibility = View.VISIBLE
         }
         val uid = getCurrentUserId()
         observeDoctorData()
@@ -287,8 +309,8 @@ class AccountSettingsFragment : Fragment() {
 
     private fun setupPatientData(patient: Patient) {
         with(binding.includeProfileSection){
-            tvProfileName.text = patient.name
-            tvProfileTypeName.text = patient.user_role
+            includeProfilePatient.tvProfileName.text = patient.name
+            includeProfilePatient.tvProfileTypeName.text = patient.user_role
             loadProfileImage(patient.profile_image)
         }
     }

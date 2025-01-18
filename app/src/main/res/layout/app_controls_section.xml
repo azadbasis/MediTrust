@@ -152,15 +152,26 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_appVersion"
+        android:id="@+id/tv_appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_25sdp"
-        android:text="Version 1.0.1"
+        android:text="Medi Trust"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_appControls" />
+<TextView
+        android:id="@+id/tv_appVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:paddingTop="@dimen/_5sdp"
+        android:text="v1.0.1"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_appControls" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_appName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

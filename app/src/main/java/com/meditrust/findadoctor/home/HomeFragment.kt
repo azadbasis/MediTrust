@@ -265,12 +265,12 @@ class HomeFragment : Fragment(), ChildAdapter.OnItemClickListener {
             }
 
             R.id.action_account -> {
-                if (isUserAnonymous()) {
+               /* if (isUserAnonymous()) {
                     notifyUserToLogin()
                 }else{
 
-                    findNavController().navigate(R.id.action_homeFragment_to_accountSettingsFragment)
-                }
+                }*/
+                findNavController().navigate(R.id.action_homeFragment_to_accountSettingsFragment)
                 true
             }
 

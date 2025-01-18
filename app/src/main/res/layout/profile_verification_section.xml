@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="@+id/include_profileSection">
 
-    app:layout_constraintTop_toBottomOf="@+id/include_profileSection"
-    >
     <TextView
         android:id="@+id/tv_profileStatus"
         android:layout_width="0dp"
@@ -16,20 +15,19 @@
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-       />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Filled"
         android:id="@+id/card_profileStatus"
-       app:cardBackgroundColor="@color/md_theme_onPrimary"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
         android:clickable="true"
-
         android:foreground="?attr/selectableItemBackground"
+
         android:orientation="horizontal"
+        app:cardBackgroundColor="@color/md_theme_onPrimary"
         app:layout_constraintTop_toBottomOf="@id/tv_profileStatus">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,12 +40,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:layout_weight="1"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
                 android:text="Profile Activated - Now Live!"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/bar_profileStatus"
                 android:layout_width="0dp"
@@ -65,10 +64,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:text="Congratulations! Your profile has been successfully activated and is now visible to patients. Start connecting with patients and providing exceptional care today!"
-                app:layout_constraintStart_toStartOf="@+id/bar_profileStatus"
-                app:layout_constraintTop_toBottomOf="@+id/bar_profileStatus"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="@+id/bar_profileStatus"
+                app:layout_constraintTop_toBottomOf="@+id/bar_profileStatus" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
