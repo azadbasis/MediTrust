@@ -9,7 +9,7 @@
     <item
         android:id="@+id/action_account"
         android:contentDescription="content_description_favorite"
-        android:icon="@drawable/ic_profile_avatar"
+        android:icon="@drawable/twotone_account_circle"
         android:title="Account"
         app:showAsAction="always" />
 </menu>

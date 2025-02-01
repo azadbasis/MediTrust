@@ -25,7 +25,7 @@
         android:clickable="true"
         android:contentDescription="Profile Image"
         android:focusable="true"
-        android:src="@drawable/ic_profile_avatar"
+        android:src="@drawable/ic_account_circle"
         app:civ_border_color="@color/md_theme_primary_mediumContrast"
         app:civ_border_width="@dimen/_1sdp"
         app:layout_constraintStart_toStartOf="parent"

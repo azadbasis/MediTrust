@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#1ACFCFCF"
             android:clickable="false"
-            app:icon="@drawable/ic_profile_avatar"
+            app:icon="@drawable/ic_admin_panel_settings"
             app:iconTint="@android:color/black" />
         <TextView
             android:layout_width="wrap_content"
