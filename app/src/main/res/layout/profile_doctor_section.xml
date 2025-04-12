@@ -17,8 +17,8 @@
     />
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile"
-        android:layout_width="@dimen/_48sdp"
-        android:layout_height="@dimen/_48sdp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -32,36 +32,49 @@
         app:layout_constraintTop_toBottomOf="@id/tv_doctorBanner"
         tools:ignore="VectorDrawableCompat" />
     <TextView
-        android:id="@+id/tv_profileName"
-        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:id="@+id/tv_doctorName"
+      android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/_10sdp"
         android:text="Azharul Islam"
-        android:drawableEnd="@drawable/ic_verified_profile"
-        android:drawableTint="@color/colorMediTrust"
-        android:drawablePadding="@dimen/_10sdp"
         app:layout_constraintStart_toEndOf="@+id/img_profile"
         app:layout_constraintTop_toTopOf="@+id/img_profile" />
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_verified"
+        android:contentDescription="Verified email"
+        android:visibility="visible"
+        app:tint="@color/md_theme_primary"
+        app:layout_constraintTop_toTopOf="@id/tv_doctorName"
+        app:layout_constraintBottom_toBottomOf="@id/tv_doctorName"
+        app:layout_constraintStart_toEndOf="@id/tv_doctorName"
+        />
     <TextView
-        android:id="@+id/tv_profileTypeName"
-        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:id="@+id/tv_specialization"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="0dp"
+        android:textColor="@android:color/darker_gray"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_10sdp"
         android:paddingStart="@dimen/_10sdp"
         android:text="Cardiologist "
         app:layout_constraintStart_toEndOf="@+id/img_profile"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profileName" />
-    <Button
+        app:layout_constraintTop_toBottomOf="@+id/tv_doctorName" />
+    <TextView
         android:id="@+id/btn_viewProfile"
-        style="@style/Widget.Material3.Button.TextButton"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="0dp"
+        android:textColor="@android:color/darker_gray"
         android:layout_height="wrap_content"
-        android:text="View profile"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profileTypeName"
-        app:layout_constraintStart_toStartOf="@+id/tv_profileTypeName"
-        android:paddingTop="10dp"
+        android:text="azad...@gmail.com"
+        android:paddingStart="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_specialization"
+        app:layout_constraintStart_toStartOf="@+id/tv_specialization"
+
         />
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider_profile"
@@ -69,4 +82,43 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/btn_viewProfile" />
+    <LinearLayout
+        android:id="@+id/layout_doctorProfile"
+        android:background="@drawable/custom_card_view_drawable"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/divider_profile">
+        <Button
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1ACFCFCF"
+            android:clickable="false"
+            app:icon="@drawable/ic_profile_avatar"
+            app:iconTint="@android:color/black" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Your profile"
+            android:paddingStart="@dimen/_10sdp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_forward_settings"
+            android:layout_gravity="center"
+            app:tint="@color/md_theme_primary"
+            />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
