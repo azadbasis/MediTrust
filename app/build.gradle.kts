@@ -106,6 +106,8 @@ dependencies {
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
+
+    //circle image view
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
