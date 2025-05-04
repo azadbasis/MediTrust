@@ -118,8 +118,8 @@ class AccountSettingsFragment : Fragment() {
     private fun populateDoctorFields(doctor: Doctor) {
 
         with(binding.includeProfileSection.includeProfileDoctor) {
-            tvProfileName.text = doctor.title + " " + doctor.name
-            tvProfileTypeName.text = doctor.user_role
+            tvDoctorName.text = doctor.title + " " + doctor.name
+            tvSpecialization.text = doctor.user_role
             loadProfileImage(doctor.profile_image)
         }
 
