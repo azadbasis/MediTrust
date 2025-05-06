@@ -248,7 +248,7 @@ class AccountSettingsFragment : Fragment() {
 
     private fun setupAdminData(admin: Admin) {
         with(binding.includeProfileSection){
-            includeProfileAdmin.tvProfileName.text = admin.name
+            includeProfileAdmin.tvAdminName.text = admin.name
             includeProfileAdmin.tvProfileTypeName.text = admin.user_role
             loadProfileImage(admin.profile_image)
         }
@@ -309,7 +309,7 @@ class AccountSettingsFragment : Fragment() {
 
     private fun setupPatientData(patient: Patient) {
         with(binding.includeProfileSection){
-            includeProfilePatient.tvProfileName.text = patient.name
+            includeProfilePatient.tvPatientName.text = patient.name
             includeProfilePatient.tvProfileTypeName.text = patient.user_role
             loadProfileImage(patient.profile_image)
         }

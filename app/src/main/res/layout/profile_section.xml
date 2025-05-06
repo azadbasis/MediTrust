@@ -12,7 +12,7 @@
     <!--Doctor user section-->
     <include android:id="@+id/include_profileDoctor"
         layout="@layout/profile_doctor_section"
-        android:visibility="visible"
+        android:visibility="gone"
         />
     <!--Patient user section-->
     <include android:id="@+id/include_profilePatient"
