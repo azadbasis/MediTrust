@@ -42,31 +42,32 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_weight="1"
-                android:text="Profile Activated - Now Live!"
+                android:text="Profile Completeness: 70%"
                 android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/bar_profileStatus"
+                app:layout_constraintTop_toTopOf="@+id/bar_profileStatus"
 
-            <com.google.android.material.progressindicator.LinearProgressIndicator
+                />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/bar_profileStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_60sdp"
-                android:progress="100"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_statusRate"
-                app:layout_constraintTop_toBottomOf="@id/tv_statusRate" />
+                android:progress="70"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_statusReason"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="Your profile is now visible to patients on MediTrust."
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@android:color/darker_gray"
+                android:text="Please complete your profile to proceed with verification."
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bar_profileStatus" />
+                app:layout_constraintStart_toStartOf="@+id/tv_statusRate"
+                app:layout_constraintTop_toBottomOf="@+id/tv_statusRate" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
