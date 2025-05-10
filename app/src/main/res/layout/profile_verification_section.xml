@@ -68,6 +68,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_statusRate"
                 app:layout_constraintTop_toBottomOf="@+id/tv_statusRate" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
