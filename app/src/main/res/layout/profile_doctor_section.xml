@@ -200,7 +200,7 @@
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/_15sdp"
+        android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_5sdp"
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_5sdp"
