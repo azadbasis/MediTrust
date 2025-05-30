@@ -1,59 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/include_medicalRecordSetup">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="@id/include_profileVerification"
+    >
     <TextView
-        android:id="@+id/tv_storeSetup"
+        android:id="@+id/tv_subscriptionPlan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="Admin Control"
+        android:text="My Membership &amp; Health Plan"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <LinearLayout
-        android:id="@+id/layout_adminControl"
-        android:background="@drawable/custom_card_view_drawable"
-        android:layout_margin="@dimen/_10sdp"
+        android:id="@+id/layout_planSetup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/custom_card_view_drawable"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/_15sdp"
+        android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_15sdp"
+        android:paddingEnd="@dimen/_5sdp"
         android:paddingBottom="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@id/tv_storeSetup">
+        app:layout_constraintTop_toBottomOf="@id/tv_subscriptionPlan"
+        tools:layout_editor_absoluteX="13dp">
+
         <Button
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#1ACFCFCF"
             android:clickable="false"
-            app:icon="@drawable/ic_admin_panel_settings"
+            app:icon="@drawable/ic_verified"
             app:iconTint="@android:color/black" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Manage accounts"
             android:paddingStart="@dimen/_10sdp"
+            android:text="Membership"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:paddingEnd="@dimen/_5sdp"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_forward_settings"
             android:layout_gravity="center"
             app:tint="@color/md_theme_primary"
+            android:paddingEnd="@dimen/_10sdp"
             />
     </LinearLayout>
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile"
@@ -21,182 +21,189 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="VectorDrawableCompat" />
+
     <TextView
         android:id="@+id/tv_doctorName"
-      android:textSize="20sp"
-        android:textStyle="bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/_15sdp"
         android:text="Azharul Islam"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/img_profile"
         app:layout_constraintTop_toTopOf="@+id/img_profile" />
+
     <ImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="4dp"
-        android:src="@drawable/ic_verified_filled"
         android:contentDescription="Verified email"
+        android:src="@drawable/ic_unverified"
         android:visibility="visible"
-        app:tint="@color/md_theme_primary"
-        app:layout_constraintTop_toTopOf="@id/tv_doctorName"
         app:layout_constraintBottom_toBottomOf="@id/tv_doctorName"
         app:layout_constraintStart_toEndOf="@id/tv_doctorName"
-        />
+        app:layout_constraintTop_toTopOf="@id/tv_doctorName"
+        app:tint="@color/md_theme_error" />
+
     <TextView
         android:id="@+id/tv_specialization"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="0dp"
-        android:textColor="@android:color/darker_gray"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_10sdp"
         android:paddingStart="@dimen/_15sdp"
         android:text="Cardiologist "
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/img_profile"
         app:layout_constraintTop_toBottomOf="@+id/tv_doctorName" />
+
     <TextView
         android:id="@+id/tv_email"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="0dp"
-        android:textColor="@android:color/darker_gray"
         android:layout_height="wrap_content"
-        android:text="azad...@gmail.com"
         android:paddingStart="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_specialization"
+        android:text="azad...@gmail.com"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/tv_specialization"
+        app:layout_constraintTop_toBottomOf="@+id/tv_specialization"
 
         />
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier_basicInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="img_profile,tv_email"
-        />
+        app:constraint_referenced_ids="img_profile,tv_email" />
+
     <LinearLayout
         android:id="@+id/layout_appointment"
         android:layout_width="0dp"
-        android:orientation="vertical"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingStart="@dimen/_15sdp"
         android:paddingTop="@dimen/_20sdp"
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_10sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier_basicInfo"
         app:layout_constraintEnd_toStartOf="@+id/layout_reviews"
         app:layout_constraintHorizontal_chainStyle="spread"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier_basicInfo">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="10"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Your patients"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@android:color/darker_gray"
-            />
+            android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
+
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider_appointment"
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        app:layout_constraintStart_toEndOf="@id/layout_appointment"
-        app:layout_constraintTop_toTopOf="@id/layout_appointment"
         app:layout_constraintBottom_toBottomOf="@id/layout_appointment"
-        />
+        app:layout_constraintStart_toEndOf="@id/layout_appointment"
+        app:layout_constraintTop_toTopOf="@id/layout_appointment" />
+
     <LinearLayout
         android:id="@+id/layout_reviews"
         android:layout_width="0dp"
-        android:orientation="vertical"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingStart="@dimen/_15sdp"
         android:paddingTop="@dimen/_20sdp"
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_10sdp"
-        app:layout_constraintStart_toEndOf="@+id/layout_appointment"
-        app:layout_constraintTop_toBottomOf="@id/barrier_basicInfo"
         app:layout_constraintEnd_toStartOf="@+id/layout_ratings"
-        >
+        app:layout_constraintStart_toEndOf="@+id/layout_appointment"
+        app:layout_constraintTop_toBottomOf="@id/barrier_basicInfo">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="100"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Your reviews"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@android:color/darker_gray"
-            />
+            android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
+
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider_reviews"
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        app:layout_constraintStart_toEndOf="@id/layout_reviews"
-        app:layout_constraintTop_toTopOf="@id/layout_reviews"
         app:layout_constraintBottom_toBottomOf="@id/layout_reviews"
-        />
+        app:layout_constraintStart_toEndOf="@id/layout_reviews"
+        app:layout_constraintTop_toTopOf="@id/layout_reviews" />
+
     <LinearLayout
         android:id="@+id/layout_ratings"
         android:layout_width="0dp"
-        android:orientation="vertical"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingStart="@dimen/_15sdp"
         android:paddingTop="@dimen/_20sdp"
         android:paddingBottom="@dimen/_10sdp"
-        app:layout_constraintStart_toEndOf="@+id/layout_reviews"
-        app:layout_constraintTop_toBottomOf="@id/barrier_basicInfo"
         app:layout_constraintEnd_toEndOf="parent"
-        >
+        app:layout_constraintStart_toEndOf="@+id/layout_reviews"
+        app:layout_constraintTop_toBottomOf="@id/barrier_basicInfo">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="4.5"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Average ratings"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@android:color/darker_gray"
-            />
+            android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="layout_appointment"
         android:layout_marginTop="@dimen/_15sdp"
-       />
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="layout_appointment" />
+
     <LinearLayout
         android:id="@+id/layout_doctorProfile"
-        android:background="@drawable/custom_card_view_drawable"
-        android:layout_margin="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/custom_card_view_drawable"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal"
@@ -205,6 +212,7 @@
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@id/barrier_profile">
+
         <Button
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="wrap_content"
@@ -213,19 +221,36 @@
             android:clickable="false"
             app:icon="@drawable/ic_profile_avatar"
             app:iconTint="@android:color/black" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Your profile"
             android:paddingStart="@dimen/_10sdp"
+            android:text="Your profile"
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_forward_settings"
             android:layout_gravity="center"
-            app:tint="@color/md_theme_primary"
-            />
+            android:src="@drawable/ic_forward_settings"
+            app:tint="@color/md_theme_primary" />
     </LinearLayout>
+
+    <!--Profile Verification & Activation Section-->
+    <include
+        android:id="@+id/include_profileVerification"
+        layout="@layout/doctor_profile_verification_section" />
+
+    <!--subscription plan section-->
+    <include
+        android:id="@+id/include_subscriptionPlan"
+        layout="@layout/doctor_subscription_plan_section" />
+
+    <!--Medical Record setup section-->
+    <include
+        android:id="@+id/include_medicalRecordSetup"
+        layout="@layout/doctor_medical_record_section" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

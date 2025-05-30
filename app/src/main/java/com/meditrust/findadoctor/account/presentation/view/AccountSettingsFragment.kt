@@ -163,7 +163,7 @@ class AccountSettingsFragment : Fragment() {
     }
 
     private fun accountSetupForGuest(user: FirebaseUser) {
-        binding.includeAdminSetup.root.visibility = View.GONE
+//        binding.includeAdminSetup.root.visibility = View.GONE
         with(binding.includeProfileSection){
             includeProfileGuest.cardProfileGuest.visibility = View.VISIBLE
         }
@@ -204,7 +204,7 @@ class AccountSettingsFragment : Fragment() {
             layoutAdminControl.visibility = View.GONE
 
         }*/
-        binding.includeAdminSetup.root.visibility = View.GONE
+//        binding.includeAdminSetup.root.visibility = View.GONE
         with(binding.includeProfileSection){
             includeProfilePatient.root.visibility = View.VISIBLE
         }
@@ -219,7 +219,7 @@ class AccountSettingsFragment : Fragment() {
             layoutAdminControl.visibility = View.VISIBLE
 
         }*/
-        binding.includeAdminSetup.root.visibility = View.VISIBLE
+//        binding.includeAdminSetup.root.visibility = View.VISIBLE
         with(binding.includeProfileSection){
             includeProfileAdmin.root.visibility = View.VISIBLE
         }
@@ -261,7 +261,7 @@ class AccountSettingsFragment : Fragment() {
             layoutAdminControl.visibility = View.GONE
 
         }*/
-        binding.includeAdminSetup.root.visibility = View.GONE
+//        binding.includeAdminSetup.root.visibility = View.GONE
 
         with(binding.includeProfileSection){
             includeProfileDoctor.root.visibility = View.VISIBLE

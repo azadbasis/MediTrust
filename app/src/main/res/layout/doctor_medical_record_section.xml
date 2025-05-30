@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="@id/include_subscriptionPlan"
+    >
+    <TextView
+        android:id="@+id/tv_healthRecord"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="My Health Data"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layout_healthRecord"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/md_theme_onPrimary"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_healthRecord">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/img_healthRecord"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_medical_information_48"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/md_theme_primary" />
+
+            <TextView
+                android:id="@+id/tv_healthRecordTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="Health Records"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toEndOf="@+id/img_healthRecord"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_labResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Lab results and more"
+                app:layout_constraintStart_toStartOf="@+id/tv_healthRecordTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tv_healthRecordTitle" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_forward_settings"
+                android:layout_gravity="center"
+                app:tint="@color/md_theme_primary"
+                android:paddingEnd="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/layout_doctorProfile">
+
+    <TextView
+        android:id="@+id/tv_profileStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Profile Verification &amp; Activation"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+        android:textColor="?attr/colorOnSurfaceVariant"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_profileStatus"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        app:cardBackgroundColor="@color/md_theme_errorContainer"
+        app:layout_constraintTop_toBottomOf="@id/tv_profileStatus">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/tv_statusRate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="Account Status: Restricted"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="?attr/colorOnErrorContainer"
+                app:layout_constraintStart_toEndOf="@+id/layout_profileStatus"
+                app:layout_constraintTop_toTopOf="@+id/layout_profileStatus"
+
+                />
+
+            <LinearLayout
+                android:id="@+id/layout_profileStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/bar_profileStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:progress="70"
+                    android:visibility="gone" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/md_theme_onError"
+                    android:clickable="false"
+                    app:icon="@drawable/ic_unverified"
+                    app:iconTint="@color/md_theme_error"
+
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_statusReason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Your profile has been restricted due to a policy violation. Please contact the MediTrust support team for further assistance."
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="?attr/colorOnErrorContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_statusRate"
+                app:layout_constraintTop_toBottomOf="@+id/tv_statusRate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

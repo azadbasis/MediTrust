@@ -220,4 +220,20 @@
             app:tint="@color/md_theme_primary"
             />
     </LinearLayout>
+
+    <!--Profile Verification & Activation Section-->
+    <include
+        android:id="@+id/include_profileVerification"
+        layout="@layout/patient_profile_verification_section" />
+
+    <!--subscription plan section-->
+    <include
+        android:id="@+id/include_subscriptionPlan"
+        layout="@layout/patient_subscription_plan_section" />
+
+    <!--Medical Record setup section-->
+    <include
+        android:id="@+id/include_medicalRecordSetup"
+        layout="@layout/patient_medical_record_section" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

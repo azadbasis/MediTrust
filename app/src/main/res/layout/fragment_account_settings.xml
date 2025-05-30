@@ -45,26 +45,6 @@
                 android:id="@+id/include_profileSection"
                 layout="@layout/profile_section" />
 
-            <!--Profile Verification & Activation Section-->
-            <include
-                android:id="@+id/include_profileVerification"
-                layout="@layout/profile_verification_section" />
-
-            <!--subscription plan section-->
-            <include
-                android:id="@+id/include_subscriptionPlan"
-                layout="@layout/subscription_plan_section" />
-
-            <!--Medical Record setup section-->
-            <include
-                android:id="@+id/include_medicalRecordSetup"
-                layout="@layout/medical_record_setup_section" />
-
-            <!--Admin activities setup-->
-            <include
-                android:id="@+id/include_adminSetup"
-                layout="@layout/admin_activities_setup" />
-
             <!--Language setup section-->
             <include
                 android:id="@+id/include_languageSetup"
