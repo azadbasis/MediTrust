@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_doctorName"
         app:layout_constraintStart_toEndOf="@id/tv_doctorName"
         app:layout_constraintTop_toTopOf="@id/tv_doctorName"
-        app:tint="@color/md_theme_error" />
+        app:tint="@color/md_theme_tertiary" />
 
     <TextView
         android:id="@+id/tv_specialization"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_10sdp"
         android:paddingStart="@dimen/_15sdp"
-        android:text="Cardiologist "
+        android:text="Cardiologist"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/img_profile"
@@ -67,7 +67,6 @@
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/tv_specialization"
         app:layout_constraintTop_toBottomOf="@+id/tv_specialization"
-
         />
 
     <androidx.constraintlayout.widget.Barrier
